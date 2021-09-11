@@ -25,6 +25,7 @@ https://docs.esi.evetech.net/
 
 SSO API Example (АХТУНГ! Это НЕ СПРИНГ ТАМ НИЖЕ. Надо прочитать код, понять что он делает и использовать это в наших контроллерах)
 Больше примеров тут - https://github.com/burberius/eve-esi/blob/master/src/test/java/net/troja/eve/esi/api/auth/SsoAuthTest.java
+<pre>
 /**
     * This main method can be used to generate a refresh token to run the unit
     * tests that need authentication. It is also an example how to use SSO in
@@ -70,3 +71,4 @@ public static void main(final String... args) throws IOException, URISyntaxExcep
     auth.finishFlow(code, state);
     System.out.println("Refresh Token: " + auth.getRefreshToken());
 }
+</pre>
