@@ -16,7 +16,6 @@ public class HomeController {
 		model.addAttribute("name", name);
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
 		return "index";
-		System.out.println("This is my branch");
 	}
 
 }
