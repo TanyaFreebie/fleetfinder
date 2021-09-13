@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 
 //Запуск приложения, стартовая конфигурация и прочая ересь будет жить тут. Смотрим документацию Spring
-public class FleetfinderTestApplication {
+public class FleetFinderTestApplication {
 	public static void main(String[] args) {
-	SpringApplication.run(FleetfinderTestApplication.class, args);
+	SpringApplication.run(FleetFinderTestApplication.class, args);
 	}
 }
