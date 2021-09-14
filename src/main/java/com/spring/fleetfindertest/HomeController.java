@@ -12,7 +12,8 @@ public class HomeController {
 	@GetMapping("/")
     
     //RequestParam ожидает параметр name в строке браузера(localhost:8080/?name=User) и создает аттрибут name который мы можем отобразить в шаблоне.
-	public String index(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+	public String index(@RequestParam(name="code", required=false, defaultValue="World") String name, Model model) {
+		System.out.println(name);
 		model.addAttribute("name", name);
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
 		return "index";
