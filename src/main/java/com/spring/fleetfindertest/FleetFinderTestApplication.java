@@ -3,7 +3,11 @@ package com.spring.fleetfindertest;
 import org.apache.oltu.oauth2.common.utils.JSONUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collections;
+import java.util.Map;
 
 
 @SpringBootApplication
@@ -11,7 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 //Запуск приложения, стартовая конфигурация и прочая ересь будет жить тут. Смотрим документацию Spring
 public class FleetFinderTestApplication {
-	public static void main(String[] args) {
-	SpringApplication.run(FleetFinderTestApplication.class, args);
-	}
+
+
+
+    public static void main(String[] args) {
+        SpringApplication.run(FleetFinderTestApplication.class, args);
+    }
+
 }
