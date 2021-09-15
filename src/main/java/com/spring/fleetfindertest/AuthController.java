@@ -1,5 +1,6 @@
 package com.spring.fleetfindertest;
 
+import com.company.helpers.Auth;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.auth.OAuth;
@@ -17,13 +18,9 @@ public class AuthController {
 
 	public String index() {
 
-        final String state = "d2NTpYVRNy2jnnFjQXgGdIHTp5gJexNZqWlHP9Zn";
-        final String ClientId = "be64b8e2b18d408a9202fa8f27173d55";
-    
-        final ApiClient client;
-        client = new ApiClientBuilder().clientID(ClientId).build();
-    
-        final OAuth auth = (OAuth) client.getAuthentication("evesso");
+        String state = "d2NTpYVRNy2jnnFjQXgGdIHTp5gJexNZqWlHP9Zn";
+
+        final OAuth auth = Auth.get();
         
         final Set<String> scopes = new HashSet<>();
         scopes.add(SsoScopes.PUBLIC_DATA);

@@ -1,5 +1,6 @@
 package com.spring.fleetfindertest;
 
+import com.company.helpers.Auth;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
@@ -24,13 +25,14 @@ public class HomeController {
 	public String index(@RequestParam(name="code", required=false) String authCode, @RequestParam(name="state", required=false) String authState, Model model) throws ApiException {
 
 		if(authCode != null){
-			final String ClientId = "be64b8e2b18d408a9202fa8f27173d55";
+			final String ClientId = Auth.get().getClientId();
 
-			final ApiClient client;
-			client = new ApiClientBuilder().clientID(ClientId).build();
-
-			final OAuth auth = (OAuth) client.getAuthentication("evesso");
-
+//
+//			final ApiClient client;
+//			client = new ApiClientBuilder().clientID(ClientId).build();
+//
+//			final OAuth auth = (OAuth) client.getAuthentication("evesso");
+			final OAuth auth = Auth.get();
 			auth.finishFlow(authCode, authState, authState);
 			model.addAttribute("name", auth.getRefreshToken());
 
