@@ -1,34 +1,22 @@
 package com.company.helpers;
 
-import net.troja.eve.esi.ApiClient;
-import net.troja.eve.esi.ApiClientBuilder;
+import com.spring.fleetfindertest.LoginController;
+
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.api.SsoApi;
-import net.troja.eve.esi.auth.OAuth;
+
 import net.troja.eve.esi.model.CharacterInfo;
 
 public class Character {
 
 
-    public static CharacterInfo characterInfo() {
-        final String ClientId = Auth.get().getClientId();
+    public static CharacterInfo character() throws ApiException {
+        CharacterInfo character = LoginController.api.getCharacterInfo();
 
-        final OAuth auth = Auth.get();
+        character.getCharacterID();
+        character.getCharacterName();
 
 
-        final ApiClient userClient = new ApiClientBuilder().clientID(ClientId).refreshToken(auth.getRefreshToken()).build();
 
-        System.out.println(auth.getRefreshToken());
-        System.out.println(auth.getAccessToken());
-
-        final SsoApi api = new SsoApi(userClient);
-
-        CharacterInfo character = null;
-        try {
-            character = api.getCharacterInfo();
-        } catch (ApiException e) {
-            e.printStackTrace();
-        }
 
         return character;
     }

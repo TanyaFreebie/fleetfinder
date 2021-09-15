@@ -18,7 +18,8 @@ import java.net.URISyntaxException;
 
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 @Controller
-public class HomeController {
+public class LoginController {
+	public static SsoApi api;
     //GetMapping указывает по какому URL и какой HTTP запрос мы хотим обработать. Может быть например @PostMapping("/submit") или что то типа
 	@GetMapping("/")
     
@@ -37,11 +38,13 @@ public class HomeController {
 			System.out.println(auth.getRefreshToken());
 			System.out.println(auth.getAccessToken());
 
-			final SsoApi api = new SsoApi(userClient);
+			api = new SsoApi(userClient);
 
 			CharacterInfo character = api.getCharacterInfo();
 
 			model.addAttribute("name", character.getCharacterName());
+			System.out.println(Character.character().getCharacterID());
+			System.out.println( Character.character().getCharacterName());
 
 		}
 
