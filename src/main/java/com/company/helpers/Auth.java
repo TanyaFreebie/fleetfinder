@@ -8,7 +8,7 @@ import net.troja.eve.esi.auth.OAuth;
 
 public class Auth {
     static final String ClientId = "be64b8e2b18d408a9202fa8f27173d55";
-    static  String CharacterID;
+
     public static OAuth get(){
 
 
