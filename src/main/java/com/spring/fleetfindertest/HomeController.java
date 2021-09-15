@@ -1,6 +1,7 @@
 package com.spring.fleetfindertest;
 
 import com.company.helpers.Auth;
+import com.company.helpers.Character;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
@@ -27,11 +28,6 @@ public class HomeController {
 		if(authCode != null){
 			final String ClientId = Auth.get().getClientId();
 
-//
-//			final ApiClient client;
-//			client = new ApiClientBuilder().clientID(ClientId).build();
-//
-//			final OAuth auth = (OAuth) client.getAuthentication("evesso");
 			final OAuth auth = Auth.get();
 			auth.finishFlow(authCode, authState, authState);
 			model.addAttribute("name", auth.getRefreshToken());
@@ -46,6 +42,7 @@ public class HomeController {
 			CharacterInfo character = api.getCharacterInfo();
 
 			model.addAttribute("name", character.getCharacterName());
+
 		}
 
 		//в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
