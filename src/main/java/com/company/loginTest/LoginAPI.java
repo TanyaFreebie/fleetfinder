@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class LoginAPI {
     public static void main(final String... args) throws IOException, URISyntaxException, ApiException {
-        final String state = "somesecret";
+        final String state = "d2NTpYVRNy2jnnFjQXgGdIHTp5gJexNZqWlHP9Zn\n";
         final ApiClient client;
         final String SSO_CLIENT_ID = "be64b8e2b18d408a9202fa8f27173d55";
         if (args.length == 1) {
@@ -43,7 +43,7 @@ public class LoginAPI {
         if (System.getenv().get("SSO_CALLBACK_URL") != null) {
             redirectUri = System.getenv().get("SSO_CALLBACK_URL");
         } else {
-            redirectUri = "http://localhost";
+            redirectUri = "http://localhost:8080/";
         }
         final String authorizationUri = auth.getAuthorizationUri(redirectUri, scopes, state);
         System.out.println("Authorization URL: " + authorizationUri);
