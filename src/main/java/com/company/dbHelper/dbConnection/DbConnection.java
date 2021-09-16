@@ -1,4 +1,4 @@
-package com.company.dbHelper;
+package com.company.dbHelper.dbConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ public class DbConnection {
     public static Connection user() {
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql:URL", " ", " ");
+            connection = DriverManager.getConnection("jdbc:mysql:umapalata.eu/fleetfinder", " java", "1q2w3e4r");
 
         } catch (
                 SQLException e) {
