@@ -54,7 +54,7 @@ public class User extends LoginController{
         System.out.println("\n" + corpID);
         System.out.println(nameCorp);
 String allyName = " ";
-int allyID = 1;
+int allyID = 0;
 
 
 
