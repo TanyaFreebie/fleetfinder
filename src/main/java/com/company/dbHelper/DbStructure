@@ -1,0 +1,11 @@
+CREATE TABLE fleetfinder.test (
+	char_id INT NOT NULL,
+	char_name varchar(25) NOT NULL,
+	char_image varchar(100) NOT NULL,
+	corp_id INT NOT NULL,
+	corp_name varchar(100) NOT NULL,
+	ally_id INT DEFAULT Null NULL,
+	ally_name varchar(100) DEFAULT Null NULL,
+	CONSTRAINT test_UN UNIQUE KEY (char_id),
+	CONSTRAINT test_PK PRIMARY KEY (char_id)
+)
