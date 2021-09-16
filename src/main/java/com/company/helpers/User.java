@@ -76,11 +76,15 @@ int allyID = 0;
                 id = rs.getInt("char_id");
                 System.out.println("Id from database:" + id);
                 String idString= Integer.toString(rs.getInt("char_id"));
-                System.out.println("id to string: " +idString);
                 System.out.println("id from database " +id);
                 if (id == charID) {
+
                     try {
-                        ps = DbConnection.user().prepareStatement("UPDATE test SET corp_name = '" + nameCorp + "' WHERE char_id = " + charID);
+                        ps = DbConnection.user().prepareStatement("UPDATE test SET corp_name = ?, corp_id = ?, ally_id = ?, ally_name = ? WHERE char_id = " + charID);
+                        ps.setString(1,nameCorp);
+                        ps.setInt(2,corpID);
+                        ps.setInt(3,allyID);
+                        ps.setString(4,allyName);
                         ps.execute();
                     } catch (Exception e) {
                         //                           e.printStackTrace();
@@ -94,11 +98,17 @@ int allyID = 0;
                 System.out.println("retrived id " + charID);
                 try {
                     ps = DbConnection.user().prepareStatement("INSERT INTO test (char_id, char_name, char_image, corp_id, corp_name, ally_id, ally_name)" +
-                            " VALUES (" + charID + ", '" + name + "', '" + charImage + "', " + corpID +
-                            ", '" + nameCorp + "', " + allyID + ", '" +allyName + "')");
-                                     ps.execute();
+                            " VALUES (?,?,?,?,?,?,?)");
+                    ps.setInt(1, charID);
+                    ps.setString(2,name);
+                    ps.setString(3,charImage);
+                    ps.setInt(4,corpID);
+                    ps.setString(5,nameCorp);
+                    ps.setInt(6,allyID);
+                    ps.setString(7,allyName);
+                    ps.execute();
                 } catch (Exception e) {
-                                               e.printStackTrace();
+                    e.printStackTrace();
                     OutputMessages.error();
                     System.out.println("false");
                 }
@@ -111,10 +121,6 @@ int allyID = 0;
         }
 
     }
-
-
-
-
 
 
 }
