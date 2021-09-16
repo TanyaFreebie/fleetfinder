@@ -93,11 +93,10 @@ int allyID = 1;
                 System.out.println("hardcoded check id " + id);
                 System.out.println("retrived id " + charID);
                 try {
-                    ps = DbConnection.user().prepareStatement("INSERT INTO test (char_id, char_name, char_image, corp_id, corp_name, ally_id, ally_name);" +
+                    ps = DbConnection.user().prepareStatement("INSERT INTO test (char_id, char_name, char_image, corp_id, corp_name, ally_id, ally_name)" +
                             " VALUES (" + charID + ", '" + name + "', '" + charImage + "', " + corpID +
                             ", '" + nameCorp + "', " + allyID + ", '" +allyName + "')");
-                    ps.setInt(1, 0);
-                    ps.execute();
+                                     ps.execute();
                 } catch (Exception e) {
                                                e.printStackTrace();
                     OutputMessages.error();
