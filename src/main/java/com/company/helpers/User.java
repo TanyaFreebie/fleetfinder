@@ -14,6 +14,14 @@ import java.util.List;
 public class User extends LoginController{
 
 
+    public CharacterInfo character() throws ApiException {
+        CharacterInfo character = api.getCharacterInfo();
+        return character;
+    }
+
+
+
+
 
 
 
