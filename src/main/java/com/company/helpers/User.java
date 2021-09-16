@@ -1,5 +1,6 @@
 package com.company.helpers;
 
+import com.company.dbHelper.dbConnection.DbConnection;
 import com.spring.fleetfindertest.LoginController;
 
 import net.troja.eve.esi.ApiException;
@@ -9,11 +10,16 @@ import net.troja.eve.esi.api.CharacterApi;
 import net.troja.eve.esi.api.CorporationApi;
 import net.troja.eve.esi.model.*;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
 
 public class User extends LoginController{
+    private static PreparedStatement ps;
+    private static ResultSet rs;
 
 
     public static CharacterInfo character() throws ApiException {
@@ -34,7 +40,7 @@ public class User extends LoginController{
         final CharacterPortraitResponse charPortResp = charAPI.getCharactersCharacterIdPortrait(charID, datasource, null);
         System.out.println("\n" + charPortResp.getPx256x256());
 
-        charPortResp.getPx256x256();//character_portrait
+        String charImage = charPortResp.getPx256x256();//character_portrait
         String name = character().getCharacterName();
         System.out.println(name);//character_name
         System.out.println(charID);// character_id
@@ -47,7 +53,8 @@ public class User extends LoginController{
         String nameCorp = corpRes.getName();//corporation_name
         System.out.println("\n" + corpID);
         System.out.println(nameCorp);
-
+String allyName = " ";
+int allyID = 1;
 
 
 
@@ -56,7 +63,53 @@ public class User extends LoginController{
         final AllianceApi alliAPI = new AllianceApi();
 
         final AllianceResponse AlliRes = alliAPI.getAlliancesAllianceId(charAffil.get(0).getAllianceId(), datasource, null);
-        System.out.println(AlliRes.getName());}
+        allyID = charAffil.get(0).getAllianceId();
+        allyName = AlliRes.getName();
+
+        }
+
+        try {
+            ps = DbConnection.user().prepareStatement("SELECT * FROM test WHERE char_id = " + charID);
+            rs = ps.executeQuery();
+            int id = 0;
+            while (rs.next()) {
+                id = rs.getInt("char_id");
+                System.out.println("Id from database:" + id);
+                String idString= Integer.toString(rs.getInt("char_id"));
+                System.out.println("id to string: " +idString);
+                System.out.println("id from database " +id);
+                if (id == charID) {
+                    try {
+                        ps = DbConnection.user().prepareStatement("UPDATE test SET corp_name = '" + nameCorp + "' WHERE char_id = " + charID);
+                        ps.execute();
+                    } catch (Exception e) {
+                        //                           e.printStackTrace();
+                        OutputMessages.error();
+                        System.out.println("true");
+                    }
+                }
+            }
+            if(id ==0){
+                System.out.println("hardcoded check id " + id);
+                System.out.println("retrived id " + charID);
+                try {
+                    ps = DbConnection.user().prepareStatement("INSERT INTO test (char_id, char_name, char_image, corp_id, corp_name, ally_id, ally_name);" +
+                            " VALUES (" + charID + ", '" + name + "', '" + charImage + "', " + corpID +
+                            ", '" + nameCorp + "', " + allyID + ", '" +allyName + "')");
+                    ps.setInt(1, 0);
+                    ps.execute();
+                } catch (Exception e) {
+                                               e.printStackTrace();
+                    OutputMessages.error();
+                    System.out.println("false");
+                }
+            }
+        } catch (SQLException throwables) {
+//                    throwables.printStackTrace();
+            OutputMessages.error();
+            System.out.println("global");
+
+        }
 
     }
 
