@@ -25,9 +25,9 @@ import java.util.Set;
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 @Controller
 public class LoginController {
-    protected SsoApi api;
-    protected String accessToken;
-    protected String refreshToken;
+    protected static SsoApi api;
+
+
 
 // wwww.evewho.com/character/CharId
 
@@ -43,8 +43,8 @@ public class LoginController {
             final OAuth auth = Auth.get();
             auth.finishFlow(authCode, authState, authState);
 
-            accessToken = auth.getAccessToken();
-            refreshToken = auth.getRefreshToken();
+             auth.getAccessToken();
+            String refreshToken = auth.getRefreshToken();
             model.addAttribute("code", refreshToken);
             final ApiClient userClient = new ApiClientBuilder().clientID(ClientId).refreshToken(refreshToken).build();
 
@@ -56,43 +56,7 @@ public class LoginController {
             //запрос имени для приветствия
             model.addAttribute("name", character.getCharacterName());
 
-            //запрос информации о пилоте
-            List charList= Arrays.asList(charID);
-            String datasource = "";
-
-            final CharacterApi charAPI = new CharacterApi();
-            final List<CharacterAffiliationResponse> charAffil = charAPI.postCharactersAffiliation(charList, datasource);
-            System.out.println(charAffil.get(0));
-            //портрет
-            final CharacterPortraitResponse charPortResp = charAPI.getCharactersCharacterIdPortrait(charID, datasource, null);
-            System.out.println("\n" + charPortResp.getPx256x256());
-
-            charPortResp.getPx256x256();//character_portrait
-            String name = character.getCharacterName();
-            System.out.println(name);//character_name
-            System.out.println(charID);// character_id
-            //generate evewho and zkillbord links
-
-            //запрос информации о корпорации
-            final CorporationApi corpAPI = new CorporationApi();
-            final CorporationResponse corpRes = corpAPI.getCorporationsCorporationId(charAffil.get(0).getCorporationId(), datasource, null);
-            int corpID = charAffil.get(0).getCorporationId();//corporation_id
-            String nameCorp = corpRes.getName();//corporation_name
-            System.out.println("\n" + corpID);
-            System.out.println(nameCorp);
-
-
-
-
-            //запрос информации о алиансе
-            final AllianceApi alliAPI = new AllianceApi();
-            final AllianceResponse AlliRes = alliAPI.getAlliancesAllianceId(charAffil.get(0).getAllianceId(), datasource, null);
-            System.out.println(AlliRes.getName());
-
-
-
-
-
+            User.addDataToDb();
 
         }
 
