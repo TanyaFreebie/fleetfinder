@@ -28,8 +28,8 @@ public class LoginController {
     protected SsoApi api;
     protected String accessToken;
     protected String refreshToken;
-    protected int charID;
 
+// wwww.evewho.com/character/CharId
 
     //GetMapping указывает по какому URL и какой HTTP запрос мы хотим обработать. Может быть например @PostMapping("/submit") или что то типа
     @GetMapping("/")
@@ -52,7 +52,7 @@ public class LoginController {
 
 // получение информации от сервера EVE online
             CharacterInfo character = api.getCharacterInfo();
-            charID = character.getCharacterID();
+            int charID = character.getCharacterID();
             //запрос имени для приветствия
             model.addAttribute("name", character.getCharacterName());
 
@@ -65,16 +65,30 @@ public class LoginController {
             System.out.println(charAffil.get(0));
             //портрет
             final CharacterPortraitResponse charPortResp = charAPI.getCharactersCharacterIdPortrait(charID, datasource, null);
-            System.out.println(charPortResp);
+            System.out.println("\n" + charPortResp.getPx256x256());
+
+            charPortResp.getPx256x256();//character_portrait
+            String name = character.getCharacterName();
+            System.out.println(name);//character_name
+            System.out.println(charID);// character_id
+            //generate evewho and zkillbord links
+
             //запрос информации о корпорации
             final CorporationApi corpAPI = new CorporationApi();
             final CorporationResponse corpRes = corpAPI.getCorporationsCorporationId(charAffil.get(0).getCorporationId(), datasource, null);
-            System.out.println(corpRes);
+            int corpID = charAffil.get(0).getCorporationId();//corporation_id
+            String nameCorp = corpRes.getName();//corporation_name
+            System.out.println("\n" + corpID);
+            System.out.println(nameCorp);
+
+
+
 
             //запрос информации о алиансе
             final AllianceApi alliAPI = new AllianceApi();
             final AllianceResponse AlliRes = alliAPI.getAlliancesAllianceId(charAffil.get(0).getAllianceId(), datasource, null);
-            System.out.println(AlliRes);
+            System.out.println(AlliRes.getName());
+
 
 
 
