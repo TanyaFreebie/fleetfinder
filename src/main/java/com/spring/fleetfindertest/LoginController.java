@@ -15,12 +15,10 @@ import net.troja.eve.esi.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 @Controller
@@ -35,7 +33,8 @@ public class LoginController {
     @GetMapping("/")
 
     //RequestParam ожидает параметр name в строке браузера(localhost:8080/?name=User) и создает аттрибут name который мы можем отобразить в шаблоне.
-    public String index(@RequestParam(name = "code", required = false) String authCode, @RequestParam(name = "state", required = false) String authState, Model model) throws ApiException {
+    public String index(@RequestParam(name = "code", required = false) String authCode,
+                        @RequestParam(name = "state", required = false) String authState, Model model) throws ApiException {
 
         if (authCode != null) {
             final String ClientId = Auth.get().getClientId();
@@ -50,7 +49,7 @@ public class LoginController {
 
             api = new SsoApi(userClient);
 
-// получение информации от сервера EVE online
+            // получение информации от сервера EVE online
             CharacterInfo character = api.getCharacterInfo();
             charID = character.getCharacterID();
             //запрос имени для приветствия
@@ -72,22 +71,20 @@ public class LoginController {
             System.out.println(corpRes);
 
             //запрос информации о алиансе
-            final AllianceApi alliAPI = new AllianceApi();
-            final AllianceResponse AlliRes = alliAPI.getAlliancesAllianceId(charAffil.get(0).getAllianceId(), datasource, null);
-            System.out.println(AlliRes);
-
-
-
-
-
+            if (charAffil.get(0).getAllianceId() != null) {
+                final AllianceApi alliAPI = new AllianceApi();
+                final AllianceResponse AlliRes = alliAPI.getAlliancesAllianceId(charAffil.get(0).getAllianceId(), datasource, null);
+                System.out.println(AlliRes);
+            }
         }
+        List<CharacterAffiliationResponse> characterAffiliationResponsesList = new ArrayList<>();
+
 
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
         return "index";
     }
 
-    @GetMapping("/login")
-
+    @PostMapping("/login")
     public String login() {
 
         String state = "d2NTpYVRNy2jnnFjQXgGdIHTp5gJexNZqWlHP9Zn";
@@ -99,7 +96,6 @@ public class LoginController {
         scopes.add(SsoScopes.ESI_SKILLS_READ_SKILLS_V1);
         scopes.add(SsoScopes.ESI_CHARACTERS_READ_CORPORATION_ROLES_V1);
 
-
         String redirectUri;
         if (System.getenv().get("SSO_CALLBACK_URL") != null) {
             redirectUri = System.getenv().get("SSO_CALLBACK_URL");
@@ -109,7 +105,5 @@ public class LoginController {
 
         return "redirect:"+auth.getAuthorizationUri(redirectUri, scopes, state);
     }
-
-
 
 }
