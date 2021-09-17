@@ -9,3 +9,9 @@ CREATE TABLE fleetfinder.test (
 	CONSTRAINT test_UN UNIQUE KEY (char_id),
 	CONSTRAINT test_PK PRIMARY KEY (char_id)
 )
+
+Table advertisement_test(
+    char_id
+    post_date (String!!!);
+    post_text (varchar 500)
+    char_id foreign key
