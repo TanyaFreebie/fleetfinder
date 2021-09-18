@@ -19,7 +19,7 @@ public class Pilot {
     private String charName;
 
     @Column(name = "char_image")
-    private String charImage;
+    private String charImage;// этой колонки не будет, будем генерировать сами по ID
 
     @Column(name = "corp_id")
     private Integer corpId;
