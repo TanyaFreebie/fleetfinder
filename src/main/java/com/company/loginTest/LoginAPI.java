@@ -33,9 +33,9 @@ public class LoginAPI {
         }
         final OAuth auth = (OAuth) client.getAuthentication("evesso");
         //scopes client
-// needed SsoScopes:
-// PUBLIC_DATA = "publicData";
-// ESI_CHARACTERS_READ_CORPORATION_ROLES_V1 = "esi-characters.read_corporation_roles.v1";
+        // needed SsoScopes:
+        // PUBLIC_DATA = "publicData";
+        // ESI_CHARACTERS_READ_CORPORATION_ROLES_V1 = "esi-characters.read_corporation_roles.v1";
         //
 
         final Set scopes = Collections.singleton(SsoScopes.PUBLIC_DATA);
@@ -48,7 +48,6 @@ public class LoginAPI {
         final String authorizationUri = auth.getAuthorizationUri(redirectUri, scopes, state);
         System.out.println("Authorization URL: " + authorizationUri);
         Desktop.getDesktop().browse(new URI(authorizationUri));
-
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Code from Answer: ");
         final String code = br.readLine();

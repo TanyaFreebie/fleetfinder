@@ -20,7 +20,6 @@ public class DbHelper {
         int allyID = 123;
         String charImage = "image.url";
 
-
         try {
             ps = DbConnection.user().prepareStatement("SELECT * FROM test WHERE char_id = " + charID);
             rs = ps.executeQuery();
@@ -51,13 +50,13 @@ public class DbHelper {
                             ", '" + corpName + "', " + allyID + ", '" + allyName + "');");
                     ps.execute();
                 } catch (Exception e) {
-                    //                           e.printStackTrace();
+                    //e.printStackTrace();
                     OutputMessages.error();
                     System.out.println("false");
                 }
             }
         } catch (SQLException throwables) {
-//                    throwables.printStackTrace();
+            //throwables.printStackTrace();
             OutputMessages.error();
             System.out.println("global");
 
