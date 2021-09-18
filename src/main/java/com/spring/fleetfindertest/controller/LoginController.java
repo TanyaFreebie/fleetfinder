@@ -1,33 +1,22 @@
-package com.spring.fleetfindertest;
+package com.spring.fleetfindertest.controller;
 
-import com.company.helpers.Auth;
+import com.spring.fleetfindertest.model.Auth;
 import com.company.helpers.User;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.api.AllianceApi;
-import net.troja.eve.esi.api.CharacterApi;
-import net.troja.eve.esi.api.CorporationApi;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.auth.SsoScopes;
 import net.troja.eve.esi.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 @Controller
 public class LoginController {
     protected static SsoApi api;
-
-
 
 // wwww.evewho.com/character/CharId
 
@@ -43,14 +32,14 @@ public class LoginController {
             final OAuth auth = Auth.get();
             auth.finishFlow(authCode, authState, authState);
 
-             auth.getAccessToken();
+            auth.getAccessToken();
             String refreshToken = auth.getRefreshToken();
             model.addAttribute("code", refreshToken);
             final ApiClient userClient = new ApiClientBuilder().clientID(ClientId).refreshToken(refreshToken).build();
 
             api = new SsoApi(userClient);
 
-// получение информации от сервера EVE online
+            // получение информации от сервера EVE online
             CharacterInfo character = api.getCharacterInfo();
             int charID = character.getCharacterID();
             //запрос имени для приветствия
@@ -63,31 +52,4 @@ public class LoginController {
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
         return "index";
     }
-
-    @GetMapping("/login")
-
-    public String login() {
-
-        String state = "d2NTpYVRNy2jnnFjQXgGdIHTp5gJexNZqWlHP9Zn";
-
-        final OAuth auth = Auth.get();
-
-        final Set<String> scopes = new HashSet<>();
-        scopes.add(SsoScopes.PUBLIC_DATA);
-        scopes.add(SsoScopes.ESI_SKILLS_READ_SKILLS_V1);
-        scopes.add(SsoScopes.ESI_CHARACTERS_READ_CORPORATION_ROLES_V1);
-
-
-        String redirectUri;
-        if (System.getenv().get("SSO_CALLBACK_URL") != null) {
-            redirectUri = System.getenv().get("SSO_CALLBACK_URL");
-        } else {
-            redirectUri = "http://localhost:8080/";
-        }
-
-        return "redirect:"+auth.getAuthorizationUri(redirectUri, scopes, state);
-    }
-
-
-
 }
