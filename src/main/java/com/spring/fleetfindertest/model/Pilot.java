@@ -3,17 +3,15 @@ package com.spring.fleetfindertest.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "test")
 public class Pilot {
+
     @Id
-    private Long charId;
+    private int charId;
 
     @Column(name = "char_name")
     private String charName;
