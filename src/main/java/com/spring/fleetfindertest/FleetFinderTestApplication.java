@@ -15,9 +15,6 @@ import java.util.Map;
 
 //Запуск приложения, стартовая конфигурация и прочая ересь будет жить тут. Смотрим документацию Spring
 public class FleetFinderTestApplication {
-
-
-
     public static void main(String[] args) {
         SpringApplication.run(FleetFinderTestApplication.class, args);
     }

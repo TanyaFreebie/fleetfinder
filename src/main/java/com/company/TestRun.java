@@ -4,10 +4,12 @@ import com.company.dbHelper.DbHelper;
 import com.company.dbHelper.dbConnection.DbConnection;
 import com.company.helpers.OutputMessages;
 import com.company.helpers.User;
+import com.spring.fleetfindertest.model.Pilot;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class TestRun {
     public static void main(String[] args) {

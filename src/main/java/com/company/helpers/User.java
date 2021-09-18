@@ -1,7 +1,7 @@
 package com.company.helpers;
 
 import com.company.dbHelper.dbConnection.DbConnection;
-import com.spring.fleetfindertest.LoginController;
+import com.spring.fleetfindertest.controller.LoginController;
 
 import net.troja.eve.esi.ApiException;
 
@@ -28,7 +28,7 @@ public class User extends LoginController{
     }
 
     public static void addDataToDb() throws ApiException{
-//запрос информации о пилоте
+        //запрос информации о пилоте
         int charID = character().getCharacterID();
         List charList= Arrays.asList(charID);
         String datasource = "";
@@ -53,19 +53,16 @@ public class User extends LoginController{
         String nameCorp = corpRes.getName();//corporation_name
         System.out.println("\n" + corpID);
         System.out.println(nameCorp);
-String allyName = " ";
-int allyID = 0;
-
-
+        String allyName = " ";
+        int allyID = 0;
 
         //запрос информации о алиансе
         if(charAffil.get(0).getAllianceId() != null){
-        final AllianceApi alliAPI = new AllianceApi();
+            final AllianceApi alliAPI = new AllianceApi();
 
-        final AllianceResponse AlliRes = alliAPI.getAlliancesAllianceId(charAffil.get(0).getAllianceId(), datasource, null);
-        allyID = charAffil.get(0).getAllianceId();
-        allyName = AlliRes.getName();
-
+            final AllianceResponse AlliRes = alliAPI.getAlliancesAllianceId(charAffil.get(0).getAllianceId(), datasource, null);
+            allyID = charAffil.get(0).getAllianceId();
+            allyName = AlliRes.getName();
         }
 
         try {
@@ -78,7 +75,6 @@ int allyID = 0;
                 String idString= Integer.toString(rs.getInt("char_id"));
                 System.out.println("id from database " +id);
                 if (id == charID) {
-
                     try {
                         ps = DbConnection.user().prepareStatement("UPDATE test SET corp_name = ?, corp_id = ?, ally_id = ?, ally_name = ? WHERE char_id = " + charID);
                         ps.setString(1,nameCorp);
