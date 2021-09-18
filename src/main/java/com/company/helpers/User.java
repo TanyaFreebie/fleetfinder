@@ -8,6 +8,7 @@ import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AllianceApi;
 import net.troja.eve.esi.api.CharacterApi;
 import net.troja.eve.esi.api.CorporationApi;
+import net.troja.eve.esi.api.SkillsApi;
 import net.troja.eve.esi.model.*;
 
 import java.sql.PreparedStatement;
@@ -23,7 +24,7 @@ public class User extends LoginController{
 
 
     public static CharacterInfo character() throws ApiException {
-        CharacterInfo character = api.getCharacterInfo();
+        CharacterInfo character = userApi.getCharacterInfo();
         return character;
     }
 
@@ -41,11 +42,16 @@ public class User extends LoginController{
         System.out.println("\n" + charPortResp.getPx256x256());
 
         String charImage = charPortResp.getPx256x256();//character_portrait
-        String name = character().getCharacterName();
-        System.out.println(name);//character_name
-        System.out.println(charID);// character_id
+        String name = character().getCharacterName();//character_name
+
         //generate evewho and zkillbord links
 
+
+        //++++skillpoints!!!!!!
+//final List<CharacterSkillsResponse> charSkillResp =charAPI.
+        final SkillsApi skillsApi = new SkillsApi();
+        final CharacterSkillsResponse skillResp = skillsApi.getCharactersCharacterIdSkills(charID, datasource, null,accessToken);
+        System.out.println("total skillpoints: " +skillResp.getTotalSp());
         //запрос информации о корпорации
         final CorporationApi corpAPI = new CorporationApi();
         final CorporationResponse corpRes = corpAPI.getCorporationsCorporationId(charAffil.get(0).getCorporationId(), datasource, null);
@@ -53,8 +59,11 @@ public class User extends LoginController{
         String nameCorp = corpRes.getName();//corporation_name
         System.out.println("\n" + corpID);
         System.out.println(nameCorp);
-String allyName = " ";
+String allyName = null;
 int allyID = 0;
+String allyLogo;
+
+
 
 
 
@@ -65,8 +74,13 @@ int allyID = 0;
         final AllianceResponse AlliRes = alliAPI.getAlliancesAllianceId(charAffil.get(0).getAllianceId(), datasource, null);
         allyID = charAffil.get(0).getAllianceId();
         allyName = AlliRes.getName();
+        allyLogo= "https://images.evetech.net/alliances/" + allyID +"/logo?size=128";
+            System.out.println(allyLogo );
+
+
 
         }
+
 
         try {
             ps = DbConnection.user().prepareStatement("SELECT * FROM test WHERE char_id = " + charID);
@@ -74,9 +88,7 @@ int allyID = 0;
             int id = 0;
             while (rs.next()) {
                 id = rs.getInt("char_id");
-                System.out.println("Id from database:" + id);
-                String idString= Integer.toString(rs.getInt("char_id"));
-                System.out.println("id from database " +id);
+
                 if (id == charID) {
 
                     try {
@@ -94,8 +106,7 @@ int allyID = 0;
                 }
             }
             if(id ==0){
-                System.out.println("hardcoded check id " + id);
-                System.out.println("retrived id " + charID);
+
                 try {
                     ps = DbConnection.user().prepareStatement("INSERT INTO test (char_id, char_name, char_image, corp_id, corp_name, ally_id, ally_name)" +
                             " VALUES (?,?,?,?,?,?,?)");

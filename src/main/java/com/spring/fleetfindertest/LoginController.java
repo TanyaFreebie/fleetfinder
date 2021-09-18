@@ -5,9 +5,7 @@ import com.company.helpers.User;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.api.AllianceApi;
-import net.troja.eve.esi.api.CharacterApi;
-import net.troja.eve.esi.api.CorporationApi;
+
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
@@ -17,15 +15,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 @Controller
 public class LoginController {
-    protected static SsoApi api;
+    protected static SsoApi userApi;
+    protected static String accessToken;
+    protected static String refreshToken;
 
 
 
@@ -43,16 +41,15 @@ public class LoginController {
             final OAuth auth = Auth.get();
             auth.finishFlow(authCode, authState, authState);
 
-             auth.getAccessToken();
-            String refreshToken = auth.getRefreshToken();
+            accessToken = auth.getAccessToken();
+            refreshToken = auth.getRefreshToken();
             model.addAttribute("code", refreshToken);
             final ApiClient userClient = new ApiClientBuilder().clientID(ClientId).refreshToken(refreshToken).build();
 
-            api = new SsoApi(userClient);
+            userApi = new SsoApi(userClient);
 
 // получение информации от сервера EVE online
-            CharacterInfo character = api.getCharacterInfo();
-            int charID = character.getCharacterID();
+            CharacterInfo character = userApi.getCharacterInfo();
             //запрос имени для приветствия
             model.addAttribute("name", character.getCharacterName());
 
