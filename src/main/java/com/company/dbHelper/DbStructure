@@ -1,17 +1,5 @@
-CREATE TABLE fleetfinder.test (
-	char_id INT NOT NULL,
-	char_name varchar(25) NOT NULL,
-	char_image varchar(100) NOT NULL,
-	corp_id INT NOT NULL,
-	corp_name varchar(100) NOT NULL,
-	ally_id INT DEFAULT Null NULL,
-	ally_name varchar(100) DEFAULT Null NULL,
-	CONSTRAINT test_UN UNIQUE KEY (char_id),
-	CONSTRAINT test_PK PRIMARY KEY (char_id)
-)
+создана структура базы данных, она доступна, если вы используете бивер, то просто нажмите рефреш.
 
-Table advertisement_test(
-    char_id
-    post_date (String!!!);
-    post_text (varchar 500)
-    char_id foreign key
+когда доделаю нужные вызовы и запись данных, то просто закинем в проект картинку структуры
+
+пока что тренеруемся на тестовых таблицах, потому что вызовы новой и заполнение не готовы

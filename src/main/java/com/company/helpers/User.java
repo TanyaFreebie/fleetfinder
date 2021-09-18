@@ -20,7 +20,7 @@ import java.util.List;
 
 public class User extends LoginController{
     public static CharacterInfo character() throws ApiException {
-        CharacterInfo character = api.getCharacterInfo();
+        CharacterInfo character = userApi.getCharacterInfo();
         return character;
     }
 

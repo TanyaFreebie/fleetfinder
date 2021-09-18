@@ -16,20 +16,16 @@ public class Pilot {
     @Column(name = "char_name")
     private String charName;
 
-    @Column(name = "char_image")
-    private String charImage;
 
     @Column(name = "corp_id")
     private Integer corpId;
 
-    @Column(name = "corp_name")
-    private String corpName;
+
 
     @Column(name = "ally_id")
     private Integer allyId;
 
-    @Column(name = "ally_name")
-    private String allyName;
+
     
     //char name
     //skill points

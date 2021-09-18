@@ -1,1 +1,7 @@
-Всё, что касается контроллеров из бекэнда мы пока что кидаем сюда.
+select author_id from advertisement where author = 'pilot';
+for each:
+select нужные колонки from characters where id = author_id;
+image_link(id1, size64), name, corp, skillpoints,  specialization timezone + кнопка посмотреть объяву
+2
+3
+4
