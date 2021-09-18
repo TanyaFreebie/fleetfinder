@@ -1,13 +1,12 @@
 package com.spring.fleetfindertest.controller;
 
+import com.company.TanyasManualTests.dataTypes.CharData;
 import com.spring.fleetfindertest.model.Auth;
-import com.company.helpers.User;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 @Controller
 public class LoginController {
-    protected static SsoApi api;
+    protected static SsoApi userApi;
 
 // wwww.evewho.com/character/CharId
 
@@ -37,15 +36,15 @@ public class LoginController {
             model.addAttribute("code", refreshToken);
             final ApiClient userClient = new ApiClientBuilder().clientID(ClientId).refreshToken(refreshToken).build();
 
-            api = new SsoApi(userClient);
+            userApi = new SsoApi(userClient);
 
-            // получение информации от сервера EVE online
-            CharacterInfo character = api.getCharacterInfo();
-            int charID = character.getCharacterID();
+
             //запрос имени для приветствия
-            model.addAttribute("name", character.getCharacterName());
+            model.addAttribute("name", CharData.charName(userApi));
+            System.out.println(CharData.charPortraitLink(userApi, 128));
 
-            User.addDataToDb();
+
+//            User.addDataToDb();
 
         }
 
