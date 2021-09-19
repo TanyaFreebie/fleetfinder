@@ -1,5 +1,6 @@
 package com.company.helpers;
 
+import com.company.TanyasManualTests.dataTypes.CharData;
 import com.company.dbHelper.dbConnection.DbConnection;
 import com.spring.fleetfindertest.controller.LoginController;
 import net.troja.eve.esi.ApiException;
@@ -74,11 +75,12 @@ public class User extends LoginController{
                 System.out.println("id from database " +id);
                 if (id == charID) {
                     try {
-                        ps = DbConnection.user().prepareStatement("UPDATE test SET corp_name = ?, corp_id = ?, ally_id = ?, ally_name = ? WHERE char_id = " + charID);
+                        ps = DbConnection.user().prepareStatement("UPDATE test SET corp_name = ?, corp_id = ?, ally_id = ?, ally_name = ?, total_sp = ? WHERE char_id = " + charID);
                         ps.setString(1,nameCorp);
                         ps.setInt(2,corpID);
                         ps.setInt(3,allyID);
                         ps.setString(4,allyName);
+                        ps.setLong(5, CharData.charTotalSkillPoints(userApi, accessToken) );
                         ps.execute();
                     } catch (Exception e) {
                         //                           e.printStackTrace();

@@ -33,9 +33,9 @@ public class CharData {
         return charAPI.postCharactersAffiliation(charList, datasource);
     }
 
-    public static String charTotalSkillPoints(SsoApi api, String accessToken) throws ApiException {
+    public static long charTotalSkillPoints(SsoApi api, String accessToken) throws ApiException {
         final CharacterSkillsResponse skillResp = skillApi.getCharactersCharacterIdSkills(charID(api), datasource, null, accessToken);
-        return String.valueOf(skillResp.getTotalSp());
+        return skillResp.getTotalSp();
     }
 
     public static String corpProfileAccess(SsoApi api, String accessToken) throws ApiException{

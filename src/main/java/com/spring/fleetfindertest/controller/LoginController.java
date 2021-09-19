@@ -2,7 +2,8 @@ package com.spring.fleetfindertest.controller;
 
 import com.company.TanyasManualTests.dataTypes.AllyData;
 import com.company.TanyasManualTests.dataTypes.CharData;
-import com.company.TanyasManualTests.requestsFromDb.addToDb.Character;
+import com.company.TanyasManualTests.dataTypes.CorpData;
+import com.company.helpers.User;
 import com.spring.fleetfindertest.model.Auth;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
     protected static SsoApi userApi;
+    protected static String accessToken;
 
 // wwww.evewho.com/character/CharId
 
@@ -33,7 +35,7 @@ public class LoginController {
             final OAuth auth = Auth.get();
             auth.finishFlow(authCode, authState, authState);
 
-            String accessToken = auth.getAccessToken();
+             accessToken = auth.getAccessToken();
             String refreshToken = auth.getRefreshToken();
             model.addAttribute("code", refreshToken);
             final ApiClient userClient = new ApiClientBuilder().clientID(ClientId).refreshToken(refreshToken).build();
@@ -47,10 +49,13 @@ public class LoginController {
 
 
 //+++TEST++++
-            System.out.println( CharData.charTotalSkillPoints(userApi, accessToken));
+            System.out.println(CharData.charID(userApi));
             System.out.println(CharData.charName(userApi));
+            System.out.println( CharData.charTotalSkillPoints(userApi, accessToken));
+            System.out.println(CorpData.corpID(userApi));
             System.out.println(AllyData.allyID(userApi));
-            Character.addNewChar(userApi, accessToken);
+            User.addDataToDb();
+//            Character.addNewChar(userApi, accessToken);
 //             CharacterApi charAPI = new CharacterApi();
 //            final CharacterRolesResponse charRoles = charAPI.getCharactersCharacterIdRoles(charID(userApi), " ", null, accessToken);
 //            for (CharacterRolesResponse.RolesEnum role : charRoles.getRoles()) {

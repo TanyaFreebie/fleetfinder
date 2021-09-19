@@ -17,11 +17,10 @@ public class Character {
     public static void addNewChar(SsoApi api, String accessToken){
 
         try {
-            ps = DbConnection.user().prepareStatement("INSERT INTO character (char_id, char_name, total_sp, corp_id, ally_id)" +
-                    " VALUES (?,?,?,?,?)");
+            ps = DbConnection.user().prepareStatement("INSERT INTO character (char_id, char_name, total_sp, corp_id, ally_id) VALUES (?,?,?,?,?)");
             ps.setInt(1, CharData.charID(api));
             ps.setString(2,CharData.charName(api));
-            ps.setString(3,CharData.charTotalSkillPoints(api, accessToken));
+            ps.setLong(3,CharData.charTotalSkillPoints(api, accessToken));
             ps.setInt(4, CorpData.corpID(api));
             ps.setInt(5, AllyData.allyID(api));
             ps.execute();
@@ -30,6 +29,9 @@ public class Character {
             OutputMessages.error();
             System.out.println("false");
         }
+    }
+
+    public static void updateUserData(SsoApi api, String accessToken){
 
     }
 }
