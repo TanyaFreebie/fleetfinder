@@ -2,9 +2,7 @@ package com.company.helpers;
 
 import com.company.dbHelper.dbConnection.DbConnection;
 import com.spring.fleetfindertest.controller.LoginController;
-
 import net.troja.eve.esi.ApiException;
-
 import net.troja.eve.esi.api.AllianceApi;
 import net.troja.eve.esi.api.CharacterApi;
 import net.troja.eve.esi.api.CorporationApi;

@@ -33,9 +33,9 @@ public class CharData {
         return charAPI.postCharactersAffiliation(charList, datasource);
     }
 
-    public static long charTotalSkillPoints(SsoApi api, String accessToken) throws ApiException {
+    public static String charTotalSkillPoints(SsoApi api, String accessToken) throws ApiException {
         final CharacterSkillsResponse skillResp = skillApi.getCharactersCharacterIdSkills(charID(api), datasource, null, accessToken);
-        return skillResp.getTotalSp();
+        return String.valueOf(skillResp.getTotalSp());
     }
 
     public static String corpProfileAccess(SsoApi api, String accessToken) throws ApiException{
@@ -62,8 +62,12 @@ public class CharData {
     //НЕ ГОТОВО надо создать чара и затестить - это для создания
     // страничек корп и алиансев и генерации профилей со стороны юзера
 
-    public static String cropRole(SsoApi api)throws ApiException{
-        final CharacterRolesResponse charRoles;
+    public static String cropRole(SsoApi api, String accessToken)throws ApiException{
+        final CharacterRolesResponse charRoles =charAPI.getCharactersCharacterIdRoles(charID(api), " ", null, accessToken);;
+        for (CharacterRolesResponse.RolesEnum role : charRoles.getRoles()) {
+            System.out.println(role);
+        }
+
         return " ";
     }
 
