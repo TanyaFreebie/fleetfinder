@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.company.TanyasManualTests.dataTypes.CharData.charName;
+
 
 public class User extends LoginController{
     private static PreparedStatement ps;
@@ -96,7 +98,7 @@ public class User extends LoginController{
                     ps = DbConnection.user().prepareStatement("INSERT INTO test (char_id, char_name, char_image, corp_id, corp_name, ally_id, ally_name)" +
                             " VALUES (?,?,?,?,?,?,?)");
                     ps.setInt(1, charID);
-                    ps.setString(2,name);
+                    ps.setString(2,charName(userApi));
                     ps.setString(3,charImage);
                     ps.setInt(4,corpID);
                     ps.setString(5,nameCorp);

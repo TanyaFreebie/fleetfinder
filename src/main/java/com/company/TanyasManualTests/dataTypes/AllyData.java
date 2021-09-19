@@ -15,8 +15,8 @@ private static AllianceApi alliAPI = new AllianceApi();
 
     public static int allyID(SsoApi api) throws ApiException {
         int allyID = 0;
-        if( CharData.charAffil(api).get(0).getAllianceId() != null){
-            allyID = AllyData.allyID(api);}
+        if(  CharData.charAffil(api).get(0).getAllianceId()!= null){
+            allyID =CharData.charAffil(api).get(0).getAllianceId();}
         return allyID;
     }
 
