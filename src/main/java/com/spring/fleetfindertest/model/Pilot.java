@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "characters")
 public class Pilot {
     @Id
-    private int charId;
+    private Long charId;
 
     @Column(name = "char_name")
     private String charName;

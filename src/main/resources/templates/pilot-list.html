@@ -3,42 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Pilot list</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<div th:switch="${pilots}">
-    <h2 th:case="null">No users found!</h2>
-    <div th:case="*">
-        <h2>Users</h2>
-        <table>
-            <thead>
-            <tr>
-
-                <th>Char Id</th>
-                <th>Char name</th>
-                <th>Image link</th>
-                <th>Corp Id</th>
-                <th>Corp Name</th>
-                <th>Ally Id</th>
-                <!-- <th>Ally name</th>-->
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="pilot : ${pilots}">
-                <td th:text="${pilot.charId}"></td>
-                <td th:text="${pilot.charName}"></td>
-                <td th:text="${pilot.corpId}"></td>
-                <!-- <td th:text="${pilot.corpName}"></td>-->
-                <td th:text="${pilot.corpRole}"></td>
-                <td th:text="${pilot.allyId}"></td>
-                <td th:text="${pilot.totalSp}"></td>
-                 <!--<td th:text="${pilot.allyName}"></td>-->
-                <!-- <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td> -->
-                <!-- <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td> -->
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <!-- <p><a href="/user-create">Create user</a></p>-->
- </div>
+<header th:insert="./fragments/navbar.html :: nav"> </header>
+<main role="main" class="container">
+    <div th:switch="${pilots}">
+        <h2 th:case="null">No users found!</h2>
+        <div th:case="*">
+            <h2>Users</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Char Id</th>
+                    <th>Char name</th>
+                    <th>Corp Id</th>
+                    <th>Corp Role</th>
+                    <th>Ally Id</th>
+                    <th>Total Sp</th>
+                    <!-- <th>Ally name</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pilot : ${pilots}">
+                    <td th:text="${pilot.charId}"></td>
+                    <td th:text="${pilot.charName}"></td>
+                    <td th:text="${pilot.corpId}"></td>
+                    <!-- <td th:text="${pilot.corpName}"></td>-->
+                    <td th:text="${pilot.corpRole}"></td>
+                    <td th:text="${pilot.allyId}"></td>
+                    <td th:text="${pilot.totalSp}"></td>
+                     <!--<td th:text="${pilot.allyName}"></td>-->
+                    <td><a th:href="@{profile/{id}(id=${pilot.charId})}">Profile</a></td>
+                    <!-- <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td> -->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- <p><a href="/user-create">Create user</a></p>-->
+     </div>
+</main><!-- /.container -->
  </body>
  </html>

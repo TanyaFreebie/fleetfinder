@@ -25,7 +25,6 @@ public class LoginController {
 
     //GetMapping указывает по какому URL и какой HTTP запрос мы хотим обработать. Может быть например @PostMapping("/submit") или что то типа
     @GetMapping("/")
-
     //RequestParam ожидает параметр name в строке браузера(localhost:8080/?name=User) и создает аттрибут name который мы можем отобразить в шаблоне.
     public String index(@RequestParam(name = "code", required = false) String authCode, @RequestParam(name = "state", required = false) String authState, Model model) throws ApiException {
 
@@ -45,9 +44,6 @@ public class LoginController {
 
             //запрос имени для приветствия
             model.addAttribute("name", CharData.charName(userApi));
-
-
-
 //+++TEST++++
             System.out.println(CharData.charID(userApi));
             System.out.println(CharData.charName(userApi));
