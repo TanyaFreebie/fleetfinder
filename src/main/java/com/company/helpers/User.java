@@ -62,13 +62,13 @@ public class User extends LoginController{
             allyID = charAffil.get(0).getAllianceId();
             allyName = AlliRes.getName();
         }
-        pilot.setCharId(charID);
-        pilot.setCharName(name);
-        pilot.setCharImage(charImage);
-        pilot.setCorpId(corpID);
-        pilot.setCorpName(nameCorp);
-        pilot.setAllyId(allyID);
-        pilot.setAllyName(allyName);
+//        pilot.setCharId(charID);
+//        pilot.setCharName(name);
+//        pilot.setCharImage(charImage);
+//        pilot.setCorpId(corpID);
+//        pilot.setCorpName(nameCorp);
+//        pilot.setAllyId(allyID);
+//        pilot.setAllyName(allyName);
         return pilot;
 
     }

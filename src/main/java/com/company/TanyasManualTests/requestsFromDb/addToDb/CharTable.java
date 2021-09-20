@@ -14,11 +14,10 @@ import static com.company.TanyasManualTests.dataTypes.CharData.*;
 import static com.company.TanyasManualTests.dataTypes.CorpData.corpID;
 
 
-
 public class CharTable {
     private static PreparedStatement ps;
     private static ResultSet rs;
-//надо пересмотреть этот метод
+    //надо пересмотреть этот метод
     public static void update(SsoApi api, String accessToken) throws ApiException {
         int id = 0;
         System.out.println("null id: "+id);

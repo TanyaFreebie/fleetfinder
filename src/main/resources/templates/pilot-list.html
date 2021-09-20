@@ -19,18 +19,19 @@
                 <th>Corp Id</th>
                 <th>Corp Name</th>
                 <th>Ally Id</th>
-                <th>Ally name</th>
+                <!-- <th>Ally name</th>-->
             </tr>
             </thead>
             <tbody>
             <tr th:each="pilot : ${pilots}">
                 <td th:text="${pilot.charId}"></td>
                 <td th:text="${pilot.charName}"></td>
-                <td th:text="${pilot.charImage}"></td>
                 <td th:text="${pilot.corpId}"></td>
-                <td th:text="${pilot.corpName}"></td>
+                <!-- <td th:text="${pilot.corpName}"></td>-->
+                <td th:text="${pilot.corpRole}"></td>
                 <td th:text="${pilot.allyId}"></td>
-                <td th:text="${pilot.allyName}"></td>
+                <td th:text="${pilot.totalSp}"></td>
+                 <!--<td th:text="${pilot.allyName}"></td>-->
                 <!-- <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td> -->
                 <!-- <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td> -->
             </tr>
