@@ -1,25 +1,25 @@
 package com.spring.fleetfindertest.controller;
 
+import com.company.TanyasManualTests.dataTypes.AllyData;
 import com.company.TanyasManualTests.dataTypes.CharData;
+import com.company.TanyasManualTests.dataTypes.CorpData;
+import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
 import com.spring.fleetfindertest.model.Auth;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.api.CharacterApi;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.auth.OAuth;
-import net.troja.eve.esi.model.CharacterRolesResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import static com.company.TanyasManualTests.dataTypes.CharData.charID;
-
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 @Controller
 public class LoginController {
     protected static SsoApi userApi;
+    protected static String accessToken;
 
 // wwww.evewho.com/character/CharId
 
@@ -35,7 +35,7 @@ public class LoginController {
             final OAuth auth = Auth.get();
             auth.finishFlow(authCode, authState, authState);
 
-            String accessToken = auth.getAccessToken();
+             accessToken = auth.getAccessToken();
             String refreshToken = auth.getRefreshToken();
             model.addAttribute("code", refreshToken);
             final ApiClient userClient = new ApiClientBuilder().clientID(ClientId).refreshToken(refreshToken).build();
@@ -45,13 +45,22 @@ public class LoginController {
 
             //запрос имени для приветствия
             model.addAttribute("name", CharData.charName(userApi));
-            System.out.println(CharData.charPortraitLink(userApi, 128));
+
 
 
 //+++TEST++++
-             CharacterApi charAPI = new CharacterApi();
-            final CharacterRolesResponse charRoles = charAPI.getCharactersCharacterIdRoles(charID(userApi), " ", null, accessToken);
-            System.out.println(charRoles);
+            System.out.println(CharData.charID(userApi));
+            System.out.println(CharData.charName(userApi));
+            System.out.println( CharData.charTotalSkillPoints(userApi, accessToken));
+            System.out.println(CorpData.corpID(userApi));
+            System.out.println(AllyData.allyID(userApi));
+//            User.addDataToDb();
+           CharTable.update(userApi,accessToken);
+//             CharacterApi charAPI = new CharacterApi();
+//            final CharacterRolesResponse charRoles = charAPI.getCharactersCharacterIdRoles(charID(userApi), " ", null, accessToken);
+//            for (CharacterRolesResponse.RolesEnum role : charRoles.getRoles()) {
+//                System.out.println(role);
+//            }
         }
 
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю

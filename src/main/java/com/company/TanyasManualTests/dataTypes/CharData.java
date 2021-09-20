@@ -62,8 +62,12 @@ public class CharData {
     //НЕ ГОТОВО надо создать чара и затестить - это для создания
     // страничек корп и алиансев и генерации профилей со стороны юзера
 
-    public static String cropRole(SsoApi api)throws ApiException{
-        final CharacterRolesResponse charRoles;
+    public static String cropRole(SsoApi api, String accessToken)throws ApiException{
+        final CharacterRolesResponse charRoles =charAPI.getCharactersCharacterIdRoles(charID(api), " ", null, accessToken);;
+        for (CharacterRolesResponse.RolesEnum role : charRoles.getRoles()) {
+            System.out.println(role);
+        }
+
         return " ";
     }
 
