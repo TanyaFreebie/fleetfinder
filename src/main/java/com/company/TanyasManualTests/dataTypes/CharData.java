@@ -38,11 +38,14 @@ public class CharData {
         return skillResp.getTotalSp();
     }
 
-    public static String corpProfileAccess(SsoApi api, String accessToken) throws ApiException{
-        String answer;
-        final CharacterRolesResponse  charRoles = charAPI.getCharactersCharacterIdRoles(charID(api), datasource, null, accessToken);
+    public static boolean corpProfileAccess(SsoApi api, String accessToken) throws ApiException{
 
-        return answer = "";
+        final CharacterRolesResponse  charRoleResp = charAPI.getCharactersCharacterIdRoles(charID(api), datasource, null, accessToken);
+        List<CharacterRolesResponse.RolesEnum> roles = charRoleResp.getRoles();
+        boolean hasAccess = roles.toString().contains("Director");
+
+        return hasAccess;
+        
     }
 
     public static String charZKillLink(SsoApi api) throws ApiException {

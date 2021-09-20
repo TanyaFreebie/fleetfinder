@@ -1,9 +1,6 @@
 package com.spring.fleetfindertest.controller;
 
-import com.company.TanyasManualTests.dataTypes.AllyData;
 import com.company.TanyasManualTests.dataTypes.CharData;
-import com.company.TanyasManualTests.dataTypes.CorpData;
-import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
 import com.spring.fleetfindertest.model.Auth;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
@@ -45,18 +42,18 @@ public class LoginController {
             //запрос имени для приветствия
             model.addAttribute("name", CharData.charName(userApi));
 //+++TEST++++
-            System.out.println(CharData.charID(userApi));
-            System.out.println(CharData.charName(userApi));
-            System.out.println( CharData.charTotalSkillPoints(userApi, accessToken));
-            System.out.println(CorpData.corpID(userApi));
-            System.out.println(AllyData.allyID(userApi));
-//            User.addDataToDb();
-           CharTable.update(userApi,accessToken);
-//             CharacterApi charAPI = new CharacterApi();
-//            final CharacterRolesResponse charRoles = charAPI.getCharactersCharacterIdRoles(charID(userApi), " ", null, accessToken);
-//            for (CharacterRolesResponse.RolesEnum role : charRoles.getRoles()) {
-//                System.out.println(role);
-//            }
+int charID = CharData.charID(userApi);
+            System.out.println(charID);
+//            AdvertTable.author(charID);
+//            AdvertTable.advertText(charID, "looking for new corpmates");
+//            AdvertTable.specialization(charID, "pvp");
+//            AdvertTable.timezone(charID, "Asia");
+//            AdvertTable.area(charID, "Null");
+//            AdvertTable.status(charID, true);
+
+
+
+
         }
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
         //"redirect:/profile/{id}(id=${CharData.charID(userApi)})"
