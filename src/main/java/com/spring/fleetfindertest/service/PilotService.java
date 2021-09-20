@@ -23,4 +23,7 @@ public class PilotService {
     public List<Pilot> findAll(){
         return pilotRepository.findAll();
     }
+    public Pilot savePilot(Pilot pilot){
+        return pilotRepository.save(pilot);
+    }
 }
