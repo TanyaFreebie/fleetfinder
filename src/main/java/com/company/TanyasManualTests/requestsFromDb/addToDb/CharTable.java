@@ -8,7 +8,6 @@ import net.troja.eve.esi.api.SsoApi;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import static com.company.TanyasManualTests.dataTypes.CharData.*;
 import static com.company.TanyasManualTests.dataTypes.CorpData.corpID;
@@ -39,7 +38,9 @@ public class CharTable {
     public static void addNewChar(SsoApi api, String accessToken){
 
         try {
-            ps = DbConnection.user().prepareStatement("INSERT INTO characters (char_id, char_name, total_sp, corp_id, ally_id, corp_access) VALUES (?, ?, ?, ?, ?, ?)");
+            ps = DbConnection.user().prepareStatement("INSERT INTO characters " +
+                    "(char_id, char_name, total_sp, corp_id, ally_id, corp_access)" +
+                    " VALUES (?, ?, ?, ?, ?, ?)");
             ps.setInt(1, charID(api));
             ps.setString(2,charName(api));
             ps.setLong(3, charTotalSkillPoints(api, accessToken));
@@ -47,16 +48,17 @@ public class CharTable {
             ps.setInt(5, AllyData.allyID(api));
             ps.setBoolean(6, corpProfileAccess(api, accessToken));
             ps.execute();
-        } catch  (SQLException | ApiException throwables) {
-//                    throwables.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             OutputMessages.error();
-            System.out.println("addNewChar");
         }
     }
 
     public static void updateCharData(SsoApi api, String accessToken){
         try {
-            ps = DbConnection.user().prepareStatement("UPDATE characters SET total_sp = ?, corp_id = ?, ally_id = ?, corp_access = ?  WHERE char_id = " + charID(api));
+            ps = DbConnection.user().prepareStatement("UPDATE characters " +
+                    "SET total_sp = ?, corp_id = ?, ally_id = ?, corp_access = ?  " +
+                    "WHERE char_id = " + charID(api));
             ps.setLong(1, charTotalSkillPoints(api, accessToken));
             ps.setInt(2, corpID(api));
             ps.setInt(3, AllyData.allyID(api));
@@ -65,7 +67,6 @@ public class CharTable {
         } catch (Exception e) {
             e.printStackTrace();
             OutputMessages.error();
-            System.out.println("false");
         }
     }
 }
