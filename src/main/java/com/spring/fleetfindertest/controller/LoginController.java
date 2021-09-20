@@ -58,8 +58,8 @@ public class LoginController {
 //                System.out.println(role);
 //            }
         }
-
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
+        //"redirect:/profile/{id}(id=${CharData.charID(userApi)})"
         return "index";
     }
 }
