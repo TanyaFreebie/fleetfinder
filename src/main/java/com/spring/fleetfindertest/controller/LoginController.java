@@ -1,6 +1,9 @@
 package com.spring.fleetfindertest.controller;
 
 import com.company.TanyasManualTests.dataTypes.CharData;
+import com.company.TanyasManualTests.requestsFromDb.addToDb.AllianceTable;
+import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
+import com.company.TanyasManualTests.requestsFromDb.addToDb.CorpTable;
 import com.spring.fleetfindertest.model.Auth;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
@@ -42,14 +45,11 @@ public class LoginController {
             //запрос имени для приветствия
             model.addAttribute("name", CharData.charName(userApi));
 //+++TEST++++
-int charID = CharData.charID(userApi);
-            System.out.println(charID);
-//            AdvertTable.author(charID);
-//            AdvertTable.advertText(charID, "looking for new corpmates");
-//            AdvertTable.specialization(charID, "pvp");
-//            AdvertTable.timezone(charID, "Asia");
-//            AdvertTable.area(charID, "Null");
-//            AdvertTable.status(charID, true);
+
+
+            CharTable.update(userApi, accessToken);
+            CorpTable.update(userApi);
+            AllianceTable.update(userApi);
 
 
 
