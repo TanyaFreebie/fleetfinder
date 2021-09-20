@@ -38,6 +38,10 @@ public class CharData {
         return skillResp.getTotalSp();
     }
 
+
+    //этот метод нужен для кнопки создания корпы
+    // если он "true", то кнопка есть
+    // если "false", то кнопки нет
     public static boolean corpProfileAccess(SsoApi api, String accessToken) throws ApiException{
 
         final CharacterRolesResponse  charRoleResp = charAPI.getCharactersCharacterIdRoles(charID(api), datasource, null, accessToken);
