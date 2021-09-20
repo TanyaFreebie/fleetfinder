@@ -46,7 +46,6 @@ public class PilotController {
         model.addAttribute("pilot", pilot);
         return "/profile";
     }
-
 //    @GetMapping("/add")
 //    public String createPilot(Pilot pilot) throws ApiException {
 //        User.addDataToDb();

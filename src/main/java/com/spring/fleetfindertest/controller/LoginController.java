@@ -24,7 +24,7 @@ public class LoginController {
     @GetMapping("/")
     //RequestParam ожидает параметр name в строке браузера(localhost:8080/?name=User) и создает аттрибут name который мы можем отобразить в шаблоне.
     public String index(@RequestParam(name = "code", required = false) String authCode, @RequestParam(name = "state", required = false) String authState, Model model) throws ApiException {
-
+        String charId = "";
         if (authCode != null) {
             final String ClientId = Auth.get().getClientId();
 
@@ -42,7 +42,7 @@ public class LoginController {
             //запрос имени для приветствия
             model.addAttribute("name", CharData.charName(userApi));
 //+++TEST++++
-int charID = CharData.charID(userApi);
+            int charID = CharData.charID(userApi);
             System.out.println(charID);
 //            AdvertTable.author(charID);
 //            AdvertTable.advertText(charID, "looking for new corpmates");
@@ -50,13 +50,13 @@ int charID = CharData.charID(userApi);
 //            AdvertTable.timezone(charID, "Asia");
 //            AdvertTable.area(charID, "Null");
 //            AdvertTable.status(charID, true);
-
-
-
+            charId = Integer.toString(charID);
 
         }
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
         //"redirect:/profile/{id}(id=${CharData.charID(userApi)})"
-        return "index";
+
+        //return "index";
+        return "redirect:/profile/"+charId;
     }
 }
