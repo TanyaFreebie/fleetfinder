@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import static com.company.TanyasManualTests.dataTypes.AllyData.*;
-import static com.company.TanyasManualTests.dataTypes.CorpData.*;
 
 public class AllianceTable {
     private static PreparedStatement ps;
@@ -20,7 +19,7 @@ public class AllianceTable {
 
             int id = 0;
             try {
-                ps = DbConnection.user().prepareStatement("SELECT * FROM alliances WHERE ally_id = " + corpID(api));
+                ps = DbConnection.user().prepareStatement("SELECT * FROM alliances WHERE ally_id = " + allyID(api));
                 rs = ps.executeQuery();
                 while (rs.next()) {
                     id = rs.getInt("ally_id");
@@ -31,7 +30,7 @@ public class AllianceTable {
                 OutputMessages.error();
                 System.out.println("true");
             }
-            if (id != corpID(api)) {
+            if (id != allyID(api)) {
                 addNewAlly(api);
             }
         }

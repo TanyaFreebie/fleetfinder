@@ -31,7 +31,8 @@ public class CorpTable {
             System.out.println("true");
         }
 
-        if(id==corpID(api)){updateCorpData(api);}else{addNewCorp(api);}
+        if(id==corpID(api)){
+            updateCorp(api);}else{addNewCorp(api);}
     }
 
     public static void addNewCorp(SsoApi api){
@@ -51,7 +52,7 @@ public class CorpTable {
         }
     }
 
-    public static void updateCorpData(SsoApi api){
+    public static void updateCorp(SsoApi api){
         try {
             ps = DbConnection.user().prepareStatement("UPDATE corporations " +
                     "SET member_count = ?, ally_id = ?  " +
