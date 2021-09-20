@@ -1,9 +1,7 @@
 package com.spring.fleetfindertest.controller;
 
-import com.company.TanyasManualTests.dataTypes.AllyData;
 import com.company.TanyasManualTests.dataTypes.CharData;
-import com.company.TanyasManualTests.dataTypes.CorpData;
-import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
+import com.company.TanyasManualTests.requestsFromDb.addToDb.AllianceTable;
 import com.spring.fleetfindertest.model.Auth;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
@@ -45,13 +43,12 @@ public class LoginController {
             //запрос имени для приветствия
             model.addAttribute("name", CharData.charName(userApi));
 //+++TEST++++
-            System.out.println(CharData.charID(userApi));
+
             System.out.println(CharData.charName(userApi));
-            System.out.println( CharData.charTotalSkillPoints(userApi, accessToken));
-            System.out.println(CorpData.corpID(userApi));
-            System.out.println(AllyData.allyID(userApi));
-//            User.addDataToDb();
-           CharTable.update(userApi,accessToken);
+
+
+           // System.out.println("has roles: "+CharData.corpProfileAccess(userApi,accessToken));
+           AllianceTable.update(userApi);
 //             CharacterApi charAPI = new CharacterApi();
 //            final CharacterRolesResponse charRoles = charAPI.getCharactersCharacterIdRoles(charID(userApi), " ", null, accessToken);
 //            for (CharacterRolesResponse.RolesEnum role : charRoles.getRoles()) {
