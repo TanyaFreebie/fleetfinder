@@ -21,8 +21,10 @@ public class Pilot {
 //    @Column(name = "char_image")
 //    private String charImage;
 
-    @Column(name = "corp_role")
-    private String corpRole;
+//    @Column(name = "corp_role")
+//    private String corpRole;
+    @Column(name="corp_access")
+    private String corpAccess;
 
     @Column(name = "ally_id")
     private Integer allyId;
