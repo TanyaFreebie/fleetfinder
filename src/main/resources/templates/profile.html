@@ -6,21 +6,36 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
 
     <!-- Bootstrap core CSS -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+
 </head>
 <body>
-<header th:insert="./fragments/navbar.html :: nav"> </header>
-<!--  profile/charId 31581355 -> propisat iz logina if id != access id = redirect to mainPage -->
-<br/>
-<br/>
-<br/>
-<div th:object = "${pilot}">
-    <p><b>Char Id:</b> <span th:utext="${pilot.charId}"></span></p>
-    <p><b>Char Name:</b> <span th:utext="${pilot.charName}"></span></p>
-    <p><b>Corp Id:</b> <span th:utext="${pilot.corpId}"></span></p>
-    <p><b>Corp Role:</b> <span th:utext="${pilot.corpRole}"></span></p>
-    <p><b>Ally Id:</b> <span th:utext="${pilot.allyId}"></span></p>
-    <p><b>Total Sp:</b> <span th:utext="${pilot.totalSp}"></span></p>
-</div>
-</body>
+    <header th:insert="./fragments/navbar.html :: nav"> </header>
+    <!--  profile/charId 31581355 -> propisat iz logina if id != access id = redirect to mainPage -->
+    <br/>
+    <br/>
+    <br/>
+    <div class="container">
+    
+    <div class="profile_wrapper">
+    <div class="profile-container">
+        <div class="image-wrapper">
+            <img src="" alt="asd">
+        </div>
+    <div class="text-wrapper">
+        <div class="regular-text" th:object = "${pilot}">
+            <p><b>Char Id:</b> <span th:utext="${pilot.charId}">Char Id</span></p>
+            <p><b>Char Name:</b> <span th:utext="${pilot.charName}">Char Name</span></p>
+            <p><b>Corp Id:</b> <span th:utext="${pilot.corpId}">Corp Id</span></p>
+            <p><b>Corp Role:</b> <span th:utext="${pilot.corpRole}">Corp Role</span></p>
+            <p><b>Ally Id:</b> <span th:utext="${pilot.allyId}"></span>Ally Id</p>
+            <p><b>Total Sp:</b> <span th:utext="${pilot.totalSp}"></span>Total Sp</p>
+        </div>
+    </div>
+    </div>
+        </div>
+    </div>
+    </body>
 </html>
