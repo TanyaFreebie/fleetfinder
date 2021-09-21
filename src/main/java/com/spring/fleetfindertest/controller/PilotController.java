@@ -93,9 +93,10 @@ public class PilotController {
     }
 //    @GetMapping("/add")
 //    public String createPilot(Pilot pilot) throws ApiException {
-//        User.addDataToDb();
-//        System.out.println("PILOT: " + User.addDataToDb().toString());
-//        pilotService.savePilot(User.addDataToDb());
-//        return "redirect:/pilot-list";
+////        User.addDataToDb();
+////        System.out.println("PILOT: " + User.addDataToDb().toString());
+////        pilotService.savePilot(User.addDataToDb());
+////        return "redirect:/pilot-list";
+
 //    }
 }

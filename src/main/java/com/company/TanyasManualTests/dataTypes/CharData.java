@@ -1,5 +1,6 @@
 package com.company.TanyasManualTests.dataTypes;
 
+import com.spring.fleetfindertest.model.Pilot;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.CharacterApi;
 import net.troja.eve.esi.api.SkillsApi;
@@ -8,6 +9,9 @@ import net.troja.eve.esi.model.*;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static com.company.TanyasManualTests.dataTypes.AllyData.allyID;
+import static com.company.TanyasManualTests.dataTypes.CorpData.corpID;
 
 public class CharData {
     private static String datasource = "";
@@ -66,18 +70,17 @@ public class CharData {
     }
 
 
-    //НЕ ГОТОВО надо создать чара и затестить - это для создания
-    // страничек корп и алиансев и генерации профилей со стороны юзера
+    public static Pilot updateChar(SsoApi api, String accessToken) throws ApiException{
+        Pilot character = new Pilot();
+        character.setCharId((long) charID(api));
+        character.setCharName(charName(api));
+        character.setTotalSp(charTotalSkillPoints(api, accessToken));
+        character.setCorpId(corpID(api));
+        character.setCorpAccess(corpProfileAccess(api, accessToken));
+        character.setAllyId(allyID(api));
 
-    public static String cropRole(SsoApi api, String accessToken)throws ApiException{
-        final CharacterRolesResponse charRoles =charAPI.getCharactersCharacterIdRoles(charID(api), " ", null, accessToken);;
-        for (CharacterRolesResponse.RolesEnum role : charRoles.getRoles()) {
-            System.out.println(role);
-        }
-
-        return " ";
+        return character;
     }
-
     //END OF CLASS
 
 }
