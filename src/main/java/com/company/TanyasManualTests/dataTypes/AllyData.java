@@ -1,5 +1,6 @@
 package com.company.TanyasManualTests.dataTypes;
 
+import com.spring.fleetfindertest.model.Alliance;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AllianceApi;
 import net.troja.eve.esi.api.SsoApi;
@@ -39,5 +40,14 @@ private static AllianceApi alliAPI = new AllianceApi();
     public static String allyLogoLink(SsoApi api, int size) throws ApiException {
         //available sizes 256, 128, 64
         return "https://images.evetech.net/alliances/" + allyID(api) + "/logo?size=" + size;
+    }
+
+    public static Alliance updateAlly(SsoApi api) throws ApiException{
+     Alliance ally = new Alliance();
+     ally.setAllyId((long) allyID(api));
+     ally.setAllyName(allyName(api));
+     ally.setAllyTicker(allyTicker(api));
+
+        return ally;
     }
 }
