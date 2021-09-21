@@ -53,7 +53,7 @@ public class CharData {
         boolean hasAccess = roles.toString().contains("Director");
 
         return hasAccess;
-        
+
     }
 
     public static String charZKillLink(SsoApi api) throws ApiException {
@@ -70,7 +70,7 @@ public class CharData {
     }
 
 
-    public static Pilot updateChar(SsoApi api, String accessToken) throws ApiException{
+public static Pilot updateChar(SsoApi api, String accessToken) throws ApiException{
         Pilot character = new Pilot();
         character.setCharId((long) charID(api));
         character.setCharName(charName(api));
@@ -78,7 +78,6 @@ public class CharData {
         character.setCorpId(corpID(api));
         character.setCorpAccess(corpProfileAccess(api, accessToken));
         character.setAllyId(allyID(api));
-
         return character;
     }
     //END OF CLASS

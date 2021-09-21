@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "eve.client.userAuthorizationUri",
+      "type": "java.lang.String",
+      "description": "Description for eve.client.userAuthorizationUri."
+    },
+    {
+      "name": "eve.client.accessTokenUri",
+      "type": "java.lang.String",
+      "description": "Description for eve.client.accessTokenUri."
+    }
+  ] }
