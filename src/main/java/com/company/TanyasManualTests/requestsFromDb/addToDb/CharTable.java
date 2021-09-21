@@ -3,6 +3,7 @@ package com.company.TanyasManualTests.requestsFromDb.addToDb;
 import com.company.TanyasManualTests.dataTypes.AllyData;
 import com.company.dbHelper.dbConnection.DbConnection;
 import com.company.helpers.OutputMessages;
+import com.spring.fleetfindertest.model.Pilot;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.SsoApi;
 
@@ -17,6 +18,17 @@ public class CharTable {
     private static PreparedStatement ps;
     private static ResultSet rs;
     //надо пересмотреть этот метод
+    public static Pilot addDataToDb(SsoApi api, String accessToken) throws ApiException {
+        Pilot pilot = new Pilot();
+        pilot.setCharId((long) charID(api));
+        pilot.setCharName(charName(api));
+        pilot.setCorpId(corpID(api));
+        pilot.setCorpAccess(corpProfileAccess(api, accessToken));
+        pilot.setAllyId(AllyData.allyID(api));
+        pilot.setTotalSp(charTotalSkillPoints(api, accessToken));
+        //pilot.setLastUpdate();
+        return pilot;
+    }
     public static void update(SsoApi api, String accessToken) throws ApiException {
         int id = 0;
         try {
