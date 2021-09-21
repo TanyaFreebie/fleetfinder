@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
-    <style>
-table td{
-vertical-align:top;
-border:solid 1px #888;
-padding:10px;
-}
+    <link rel="stylesheet" href="../static/css/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
 
-    </style>
+
 </head>
-<body>
-<h1>Sorry space cat, but this galaxy doesn't exist</h1>
-<table>
-    <tr>
-        <td>Date</td>
-        <td th:text="${timestamp}"/>
-    </tr>
-    <tr>
-        <td>Path</td>
-        <td th:text="${path}"/>
-    </tr>
-    <tr>
-        <td>Error</td>
-        <td th:text="${error}"/>
-    </tr>
-    <tr>
-        <td>Status</td>
-        <td th:text="${status}"/>
-    </tr>
-    <tr>
-        <td>Message</td>
-        <td th:text="${message}"/>
-    </tr>
 
-</table>
+
+<body>
+<header th:insert="./fragments/navbar.html :: nav"> </header>
+<div class = "wrapper">
+    <div class="container">
+
+        <p class="main-text">
+            Sorry space cat, but this galaxy doesn't exist
+        </p>
+
+        <div class="errorStatus">
+            <table class="centered">
+                <tr class="main-text" >
+                    <td>Error</td>
+
+                    <td th:text="${status}"/></td>
+                </tr>
+            </table>
+        </div>
+</div>
+<div class="front">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+</div>
+</div>
 </body>
 </html>
