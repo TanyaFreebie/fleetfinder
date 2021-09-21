@@ -11,6 +11,8 @@ public class AdvertTable {
     private static PreparedStatement ps;
     private static ResultSet rs;
 
+    //этот метод должен активировтаться при переходе на профиль
+    // создаёт новую строчку по ид профиля
     public static void author(int authorID) {
         int id = 0;
         try {
@@ -41,6 +43,7 @@ public class AdvertTable {
         }
     }
 
+    //запись текста объявления
     public static void advertText(int authorID, String text){
         try {
             ps = DbConnection.user().prepareStatement("UPDATE advertisements " +
@@ -55,6 +58,8 @@ public class AdvertTable {
 
     }
 
+    //запись специализации, на странице удобнее просто сделать
+    //дроп выборку
     public static void specialization(int authorID, String text){
         try {
             ps = DbConnection.user().prepareStatement("UPDATE advertisements " +
@@ -68,6 +73,7 @@ public class AdvertTable {
         }
     }
 
+    //с временем та же фигня
     public static void timezone(int authorID, String text){
         try {
             ps = DbConnection.user().prepareStatement("UPDATE advertisements " +
@@ -81,6 +87,9 @@ public class AdvertTable {
         }
     }
 
+
+    //check box menu,  отмеченное собирается в стрингу
+    //и только потом уходит в базу по этому методу
     public static void area(int authorID, String text){
         try {
             ps = DbConnection.user().prepareStatement("UPDATE advertisements " +
@@ -93,6 +102,12 @@ public class AdvertTable {
             OutputMessages.error();
         }
     }
+
+    //этот метод нужен для кнопки публикации
+    //по пррожатию записывается тру
+    //ксли в базе тру - кнопка будет менятся на "снять объявление"
+    //снять обявление - в базу пишем фасл
+    //если "тру"(1), то профиль появляется на главной странице
 
     public static boolean status(int authorID, boolean active){
 
