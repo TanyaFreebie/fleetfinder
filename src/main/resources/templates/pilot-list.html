@@ -23,18 +23,18 @@
                 <div class="pilot-list-container">
                 <div class="text-wrapper">
 
-            <table id="characters">
+            <table id="customers">
                 <thead>
                 <tr>
 
                     <th> Image </th>
                     <th>Char name</th>
-                    <th>Total Skill Points</th>
-                    <th>Specialization</th>
-                    <th>Time Zone</th>
-                    <th>Area of operation</th>
-                    <th>More</th>
-
+                    <th>Corp Id</th>
+                    <th>Corp Access</th>
+                    <th>Ally Id</th>
+                    <th>Total Sp</th>
+                    <th></th>
+                    <!-- <th>Ally name</th>-->
                 </tr>
                 </thead>
                 <tbody>
@@ -42,11 +42,13 @@
                 <tr th:each="pilot : ${pilots}">
                    <td> <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=64'}"/></td>
                     <td th:text="${pilot.charName}"></td>
+                    <td th:text="${pilot.corpId}"></td>
+                    <!-- <td th:text="${pilot.corpName}"></td>-->
+                    <td th:text="${pilot.corpAccess}"></td>
+                    <td th:text="${pilot.allyId}"></td>
                     <td th:text="${pilot.totalSp}"></td>
-                    <td th:text="${pilot.specialization}"></td>
-                    <td th:text="${pilot.timezone}"></td>
-                    <td th:text="${pilot.area}"></td>
-                    <td><a th:href="@{pilot/{id}(id=${pilot.charId})}">More</a></td>
+                     <!--<td th:text="${pilot.allyName}"></td>-->
+                    <td><a th:href="@{pilot/{id}(id=${pilot.charId})}">more</a></td>
                     <!-- <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td> -->
                 </tr>
                 </tbody>
