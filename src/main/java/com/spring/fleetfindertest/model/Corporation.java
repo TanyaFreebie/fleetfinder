@@ -26,4 +26,16 @@ public class Corporation {
     @Column(name = "ally_id")
     private Integer allyId;
 
+    @Column (name = "timezone")
+    private String timeZone;
+
+    @Column(name = "area")
+    private String area;
+
+    @Column(name = "specialization")
+    private String specialization;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
+
 }
