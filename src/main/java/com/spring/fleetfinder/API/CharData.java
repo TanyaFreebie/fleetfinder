@@ -10,6 +10,10 @@ import net.troja.eve.esi.model.*;
 import java.util.Arrays;
 import java.util.List;
 
+
+import static com.spring.fleetfinder.API.AllyData.allyID;
+import static com.spring.fleetfinder.API.CorpData.corpID;
+
 public class CharData {
     private static String datasource = "";
     private static CharacterApi charAPI = new CharacterApi();
@@ -72,9 +76,11 @@ public static Pilot updateChar(SsoApi api, String accessToken) throws ApiExcepti
         character.setCharId((long) charID(api));
         character.setCharName(charName(api));
         character.setTotalSp(charTotalSkillPoints(api, accessToken));
+
         character.setCorpId(CorpData.corpID(api));
         character.setCorpAccess(corpProfileAccess(api, accessToken));
         character.setAllyId(AllyData.allyID(api));
+
         return character;
     }
     //END OF CLASS

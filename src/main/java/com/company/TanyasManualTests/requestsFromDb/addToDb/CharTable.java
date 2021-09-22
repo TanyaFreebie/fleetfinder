@@ -10,7 +10,9 @@ import net.troja.eve.esi.api.SsoApi;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static com.spring.fleetfinder.API.CorpData.corpID;
+
+import static com.spring.fleetfinder.API.CharData.*;
+
 
 
 public class CharTable {
