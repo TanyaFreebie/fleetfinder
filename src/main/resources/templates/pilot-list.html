@@ -7,28 +7,43 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
 <header th:insert="./fragments/navbar.html :: nav"> </header>
-<main role="main" class="container">
+<main role="main" class="">
     <div th:switch="${pilots}">
         <h2 th:case="null">No users found!</h2>
         <div th:case="*">
-            <h2>Users</h2>
-            <table>
+            
+
+            <div class="pilot-list_container">
+    
+                <div class="pilot-list_wrapper">
+                <div class="pilot-list-container">
+                <div class="text-wrapper">
+
+            <table id="customers">
                 <thead>
                 <tr>
+                    <th>Image</th>
                     <th>Char Id</th>
                     <th>Char name</th>
                     <th>Corp Id</th>
                     <th>Corp Access</th>
                     <th>Ally Id</th>
                     <th>Total Sp</th>
+                    <th></th>
                     <!-- <th>Ally name</th>-->
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="pilot : ${pilots}">
+                <tr class="pilot-char-wrapper" th:each="pilot : ${pilots}">
+                    <td >
+
+                            <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=64'}"/>
+
+                </td>
                     <td th:text="${pilot.charId}"></td>
                     <td th:text="${pilot.charName}"></td>
                     <td th:text="${pilot.corpId}"></td>
@@ -37,11 +52,21 @@
                     <td th:text="${pilot.allyId}"></td>
                     <td th:text="${pilot.totalSp}"></td>
                      <!--<td th:text="${pilot.allyName}"></td>-->
-                    <td><a th:href="@{profile/{id}(id=${pilot.charId})}">Profile</a></td>
+                    <td><a th:href="@{profile/{id}(id=${pilot.charId})}">more</a></td>
                     <!-- <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td> -->
                 </tr>
                 </tbody>
             </table>
+
+        </div>
+    </div>
+        </div>
+        <div class="front">
+            <div class="stars"></div>
+            <div class="twinkling"></div>
+        </div>
+    </div>
+
         </div>
         <!-- <p><a href="/user-create">Create user</a></p>-->
      </div>

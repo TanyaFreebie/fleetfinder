@@ -22,7 +22,9 @@
     <div class="profile_wrapper">
     <div class="profile-container">
         <div class="image-wrapper">
-            <img src="" alt="asd">
+            <div class="regular-text" th:object = "${pilot}">
+                <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=256'}"/>
+            </div>
         </div>
     <div class="text-wrapper">
         <div class="regular-text" th:object = "${pilot}">
@@ -35,6 +37,10 @@
         </div>
     </div>
     </div>
+        </div>
+        <div class="front">
+            <div class="stars"></div>
+            <div class="twinkling"></div>
         </div>
     </div>
     </body>
