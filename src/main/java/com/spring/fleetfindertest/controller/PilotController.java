@@ -2,6 +2,7 @@ package com.spring.fleetfindertest.controller;
 
 import com.company.TanyasManualTests.dataTypes.CharData;
 
+import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
 import com.spring.fleetfindertest.model.Auth;
 import com.spring.fleetfindertest.model.Pilot;
 import com.spring.fleetfindertest.service.PilotService;
@@ -13,7 +14,9 @@ import net.troja.eve.esi.auth.OAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -47,6 +50,7 @@ public class PilotController {
             userApi = new SsoApi(userClient);
 
 
+
             //запрос имени для приветствия
             model.addAttribute("name", CharData.charName(userApi));
 //+++TEST++++
@@ -59,6 +63,8 @@ public class PilotController {
 //            AdvertTable.timezone(charID, "Asia");
 //            AdvertTable.area(charID, "Null");
 //            AdvertTable.status(charID, true);
+            System.out.println("SOUT: " + CharTable.addDataToDb(userApi,accessToken));
+            pilotService.savePilot(CharTable.addDataToDb(userApi,accessToken));
 
         }
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
@@ -93,9 +99,10 @@ public class PilotController {
     }
 //    @GetMapping("/add")
 //    public String createPilot(Pilot pilot) throws ApiException {
-//        User.addDataToDb();
-//        System.out.println("PILOT: " + User.addDataToDb().toString());
-//        pilotService.savePilot(User.addDataToDb());
-//        return "redirect:/pilot-list";
+////        User.addDataToDb();
+////        System.out.println("PILOT: " + User.addDataToDb().toString());
+////        pilotService.savePilot(User.addDataToDb());
+////        return "redirect:/pilot-list";
+
 //    }
 }

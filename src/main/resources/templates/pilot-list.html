@@ -26,8 +26,9 @@
             <table id="customers">
                 <thead>
                 <tr>
-                    <th>Image</th>
-                    <th>Char Id</th>
+
+                    <th> Image </th>
+
                     <th>Char name</th>
                     <th>Corp Id</th>
                     <th>Corp Access</th>
@@ -38,13 +39,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="pilot-char-wrapper" th:each="pilot : ${pilots}">
-                    <td >
 
-                            <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=64'}"/>
-
-                </td>
-                    <td th:text="${pilot.charId}"></td>
+                <tr th:each="pilot : ${pilots}">
+                   <td> <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=64'}"/></td>
                     <td th:text="${pilot.charName}"></td>
                     <td th:text="${pilot.corpId}"></td>
                     <!-- <td th:text="${pilot.corpName}"></td>-->
