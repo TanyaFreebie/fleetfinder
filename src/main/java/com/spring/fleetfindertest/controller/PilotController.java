@@ -50,6 +50,7 @@ public class PilotController {
             userApi = new SsoApi(userClient);
 
 
+
             //запрос имени для приветствия
             model.addAttribute("name", CharData.charName(userApi));
 //+++TEST++++

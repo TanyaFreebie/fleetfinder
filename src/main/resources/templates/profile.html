@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:>
 <head>
     <meta charset="UTF-8">
     <title>Pilot profile</title>
@@ -22,7 +22,9 @@
     <div class="profile_wrapper">
     <div class="profile-container">
         <div class="image-wrapper">
-            <img src= "link" alt="Character Portrait">
+            <div class="regular-text" th:object = "${pilot}">
+                <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=256'}"/>
+            </div>
         </div>
     <div class="text-wrapper">
         <div class="regular-text" th:object = "${pilot}">
