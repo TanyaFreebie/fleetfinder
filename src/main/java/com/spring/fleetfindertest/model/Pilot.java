@@ -27,9 +27,6 @@ public class Pilot {
     @Column(name = "ally_id")
     private Integer allyId;
 
-    @Column(name="last_update")
-    private String lastUpdate;
-
     @Column (name = "timezone")
     private String timeZone;
 
