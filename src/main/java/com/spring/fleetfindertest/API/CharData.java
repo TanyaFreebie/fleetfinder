@@ -1,4 +1,4 @@
-package com.company.TanyasManualTests.dataTypes;
+package com.spring.fleetfindertest.API;
 
 import com.spring.fleetfindertest.model.Pilot;
 import net.troja.eve.esi.ApiException;
@@ -10,8 +10,8 @@ import net.troja.eve.esi.model.*;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.company.TanyasManualTests.dataTypes.AllyData.allyID;
-import static com.company.TanyasManualTests.dataTypes.CorpData.corpID;
+import static com.spring.fleetfindertest.API.AllyData.allyID;
+import static com.spring.fleetfindertest.API.CorpData.corpID;
 
 public class CharData {
     private static String datasource = "";
