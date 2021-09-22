@@ -19,4 +19,6 @@ public class Alliance {
     @Column(name = "ally_ticker")
     private String allyTicker;
 
+    @Column(name="last_update")
+    private String lastUpdate;
 }

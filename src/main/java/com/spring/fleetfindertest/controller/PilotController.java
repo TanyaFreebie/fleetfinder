@@ -2,9 +2,13 @@ package com.spring.fleetfindertest.controller;
 
 import com.company.TanyasManualTests.dataTypes.CharData;
 
+import com.company.TanyasManualTests.requestsFromDb.addToDb.AllianceTable;
 import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
+import com.company.TanyasManualTests.requestsFromDb.addToDb.CorpTable;
 import com.spring.fleetfindertest.model.Auth;
 import com.spring.fleetfindertest.model.Pilot;
+import com.spring.fleetfindertest.service.AllianceService;
+import com.spring.fleetfindertest.service.CorporationService;
 import com.spring.fleetfindertest.service.PilotService;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
@@ -20,14 +24,19 @@ import java.util.List;
 
 @Controller
 public class PilotController {
-    //Дёргаем данные из ДБ
+    //Дёргаем данные из БД
     private final PilotService pilotService;
+    private final CorporationService corporationService;
+    private final AllianceService allianceService;
+
     protected static SsoApi userApi;
     protected static String accessToken;
     private static int charId;
     @Autowired
-    public PilotController(PilotService pilotService) {
+    public PilotController(PilotService pilotService, CorporationService corporationService, AllianceService allianceService) {
         this.pilotService = pilotService;
+        this.corporationService = corporationService;
+        this.allianceService = allianceService;
     }
 
     @GetMapping("/")
@@ -60,9 +69,14 @@ public class PilotController {
 //            AdvertTable.timezone(charID, "Asia");
 //            AdvertTable.area(charID, "Null");
 //            AdvertTable.status(charID, true);
-            System.out.println("SOUT: " + CharTable.addDataToDb(userApi,accessToken));
-            pilotService.savePilot(CharTable.addDataToDb(userApi,accessToken));
+            System.out.println("SOUT CHAR: " + CharTable.addCharacterDataToDb(userApi,accessToken));
+            pilotService.savePilot(CharTable.addCharacterDataToDb(userApi,accessToken));
 
+            System.out.println("SOUT CORP: " + CorpTable.addCorporationDataToDb(userApi,accessToken));
+            corporationService.saveCorporation(CorpTable.addCorporationDataToDb(userApi,accessToken));
+
+            System.out.println("SOUT ALLIANCE: " + AllianceTable.addAllianceDataToDb(userApi,accessToken));
+            allianceService.saveAlliance(AllianceTable.addAllianceDataToDb(userApi,accessToken));
         }
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
         //return "index";

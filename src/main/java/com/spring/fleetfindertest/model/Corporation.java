@@ -21,9 +21,9 @@ public class Corporation {
     private String corpTicker;
 
     @Column(name = "member_count")
-    private Integer memberCount;
+    private Long memberCount;
 
     @Column(name = "ally_id")
-    private Integer allyId;
+    private Long allyId;
 
 }

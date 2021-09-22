@@ -70,17 +70,17 @@ public class CharData {
     }
 
 
-    public static Pilot updateChar(SsoApi api, String accessToken) throws ApiException{
-        Pilot character = new Pilot();
-        character.setCharId((long) charID(api));
-        character.setCharName(charName(api));
-        character.setTotalSp(charTotalSkillPoints(api, accessToken));
-        character.setCorpId(corpID(api));
-        character.setCorpAccess(corpProfileAccess(api, accessToken));
-        character.setAllyId(allyID(api));
-
-        return character;
-    }
+//    public static Pilot updateChar(SsoApi api, String accessToken) throws ApiException{
+//        Pilot character = new Pilot();
+//        character.setCharId((long) charID(api));
+//        character.setCharName(charName(api));
+//        character.setTotalSp(charTotalSkillPoints(api, accessToken));
+//        character.setCorpId(corpID(api));
+//        character.setCorpAccess(corpProfileAccess(api, accessToken));
+//        character.setAllyId(allyID(api));
+//
+//        return character;
+//    }
     //END OF CLASS
 
 }
