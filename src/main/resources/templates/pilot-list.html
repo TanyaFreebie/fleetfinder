@@ -37,7 +37,8 @@
                     <td th:text="${pilot.allyId}"></td>
                     <td th:text="${pilot.totalSp}"></td>
                      <!--<td th:text="${pilot.allyName}"></td>-->
-                    <td><a th:href="@{profile/{id}(id=${pilot.charId})}">Profile</a></td>
+                    <!--<td><a th:href="@{profile/{id}(id=${pilot.charId})}">Profile</a></td>-->
+                    <td><a th:href="@{pilot-advertisement/{id}(id=${pilot.charId})}">Advertisement</a></td>
                     <!-- <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td> -->
                 </tr>
                 </tbody>

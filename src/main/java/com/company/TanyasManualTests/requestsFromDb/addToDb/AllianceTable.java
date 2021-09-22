@@ -17,15 +17,20 @@ import static com.company.TanyasManualTests.dataTypes.CharData.charTotalSkillPoi
 import static com.company.TanyasManualTests.dataTypes.CorpData.corpID;
 
 public class AllianceTable {
-    private static PreparedStatement ps;
-    private static ResultSet rs;
+//    private static PreparedStatement ps;
+//    private static ResultSet rs;
     public static Alliance addAllianceDataToDb(SsoApi api, String accessToken) throws ApiException {
-        Alliance alliance = new Alliance();
-        alliance.setAllyId((long) allyID(api));
-        alliance.setAllyName(allyName(api));
-        alliance.setAllyTicker(allyTicker(api));
-        //alliance.setLastUpdate();
-        return alliance;
+        if ((long) allyID(api) != 0) {
+            Alliance alliance = new Alliance();
+            alliance.setAllyId((long) allyID(api));
+            alliance.setAllyName(allyName(api));
+            alliance.setAllyTicker(allyTicker(api));
+            //alliance.setLastUpdate();
+            return alliance;
+        }
+        else{
+            return null;
+        }
     }
 //    public static void update(SsoApi api) throws ApiException {
 //        if (allyID(api) != 0) {

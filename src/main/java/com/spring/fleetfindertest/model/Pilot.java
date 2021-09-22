@@ -30,6 +30,8 @@ public class Pilot {
     @Column(name="last_update")
     private String lastUpdate;
 
+    @Column(name="advert_text")
+    private String advertText;
     //char name
     //skill points
     // title of advert Ищу пвп корпу <Посмотреть адвёрт>

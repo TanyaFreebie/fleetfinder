@@ -76,19 +76,27 @@ public class PilotController {
             corporationService.saveCorporation(CorpTable.addCorporationDataToDb(userApi,accessToken));
 
             System.out.println("SOUT ALLIANCE: " + AllianceTable.addAllianceDataToDb(userApi,accessToken));
-            allianceService.saveAlliance(AllianceTable.addAllianceDataToDb(userApi,accessToken));
+            if (AllianceTable.addAllianceDataToDb(userApi,accessToken) != null){
+                System.out.println("SOUT ALLIANCE: " + AllianceTable.addAllianceDataToDb(userApi,accessToken));
+                allianceService.saveAlliance(AllianceTable.addAllianceDataToDb(userApi, accessToken));
+            }
+            //allianceService.saveAlliance(AllianceTable.addAllianceDataToDb(userApi, accessToken));
         }
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
-        //return "index";
+        // return "index";
         // return "redirect:/profile/"+charId;
-        return "index";
+        List<Pilot> pilots = pilotService.findAll();
+        model.addAttribute("pilots", pilots);
+        return "pilot-list";
     }
+    //Pilots button in navbar
     @GetMapping("/pilot-list")
     public String pilotList(Model model){
         List<Pilot> pilots = pilotService.findAll();
         model.addAttribute("pilots", pilots);
         return "pilot-list";
     }
+    //PILOT-LIST -> (Blue button) Profile
     @GetMapping("/profile/{id}")
     public String getPilot(@PathVariable("id") Integer id, Model model){
         //I need to convert int value of Pilot`s Id to Long -> So I make id as String and then change id to Long
@@ -101,6 +109,7 @@ public class PilotController {
         model.addAttribute("pilot", pilot);
         return "/profile";
     }
+    //Profile button in navbar
     @GetMapping("profile")
     public String returnPilotPage(Model model){
         Pilot pilot = pilotService.findById((long) charId);
@@ -108,12 +117,34 @@ public class PilotController {
         //System.out.println("CHAR ID: " + charId);
         return "/profile";
     }
+    //PILOT-LIST -> (Blue button) Advertisement
+    @GetMapping("/pilot-advertisement/{id}")
+    public String getPilotAdvertisementFromList(@PathVariable("id") Integer id, Model model){
+        Long longId = Long.valueOf(id);
+        Pilot pilot = pilotService.findById(longId);
+        model.addAttribute("pilot", pilot);
+        return "/pilot-advertisement";
+    }
+    //PROFILE (navbar) -> Create advertisement IN PROFILE
+    @GetMapping("/create-advertisement")
+    public String getPilotAdvertisement(Model model){
+        Pilot pilot = pilotService.findById((long) charId);
+        model.addAttribute("pilot", pilot);
+        return "create-advertisement";
+    }
+    ////PROFILE (navbar) -> Create advertisement IN PROFILE -> Create advertisement IN CREATE ADVERTISEMENT
+    @PostMapping("/create-advertisement")
+    public String savePilotAdvertisement(Pilot pilot){
+        pilot = pilotService.findById((long) charId);
+        pilotService.savePilot(pilot);
+        System.out.println("PILOT ADVERT TEXT: " + pilot.getAdvertText());
+        return "redirect:/pilot-list";
+    }
 //    @GetMapping("/add")
 //    public String createPilot(Pilot pilot) throws ApiException {
 ////        User.addDataToDb();
 ////        System.out.println("PILOT: " + User.addDataToDb().toString());
 ////        pilotService.savePilot(User.addDataToDb());
 ////        return "redirect:/pilot-list";
-
 //    }
 }
