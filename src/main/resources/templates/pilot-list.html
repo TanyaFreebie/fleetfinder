@@ -18,7 +18,7 @@
             <table>
                 <thead>
                 <tr>
-                    <th>Char Id</th>
+                    <th> Image </th>
                     <th>Char name</th>
                     <th>Corp Id</th>
                     <th>Corp Access</th>
@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="pilot : ${pilots}">
-                    <td th:text="${pilot.charId}"></td>
+                   <td> <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=64'}"/></td>
                     <td th:text="${pilot.charName}"></td>
                     <td th:text="${pilot.corpId}"></td>
                     <!-- <td th:text="${pilot.corpName}"></td>-->

@@ -53,6 +53,7 @@ public class CorpData{
         corp.setMemberCount(memberCount(api));
         corp.setAllyId(allyID(api));
 
+
         return corp;
     }
 }
