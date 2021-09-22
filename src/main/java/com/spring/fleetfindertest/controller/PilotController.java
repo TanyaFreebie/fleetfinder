@@ -74,7 +74,7 @@ public class PilotController {
     }
     @GetMapping("/pilot-list")
     public String pilotList(Model model){
-        List<Pilot> pilots = pilotService.findAll();
+        List<Pilot> pilots = pilotService.findActive(true);
         model.addAttribute("pilots", pilots);
         return "pilot-list";
     }
