@@ -132,14 +132,24 @@ public class PilotController {
         model.addAttribute("pilot", pilot);
         return "create-advertisement";
     }
-    ////PROFILE (navbar) -> Create advertisement IN PROFILE -> Create advertisement IN CREATE ADVERTISEMENT
     @PostMapping("/create-advertisement")
-    public String savePilotAdvertisement(Pilot pilot){
-        pilot = pilotService.findById((long) charId);
+    public String createPilotAdvertisement(Pilot pilot){
+        //Pilot pilot = pilotService.findById((long) charId);
+        //model.addAttribute("pilot",pilot);
+        pilot.setCharId((long) charId);
+        System.out.println("SOUT ADVERT: " + pilot.getAdvertText());
         pilotService.savePilot(pilot);
-        System.out.println("PILOT ADVERT TEXT: " + pilot.getAdvertText());
         return "redirect:/pilot-list";
     }
+    ////PROFILE (navbar) -> Create advertisement IN PROFILE -> Create advertisement IN CREATE ADVERTISEMENT
+//    @PostMapping("/create-advertisement")
+//    public String savePilotAdvertisement(Model model){
+//        Pilot pilot = pilotService.findById((long) charId);
+//        model.addAttribute("pilot", pilot);
+//        pilotService.savePilot(pilot);
+//        System.out.println("PILOT ADVERT TEXT: " + pilot.getAdvertText());
+//        return "redirect:/pilot-list";
+//    }
 //    @GetMapping("/add")
 //    public String createPilot(Pilot pilot) throws ApiException {
 ////        User.addDataToDb();
