@@ -26,7 +26,5 @@ public class CorpService {
     public Corporation saveCorp( Corporation corporation){
         return corpRepository.save(corporation);
     }
-
-    //for corps_list we need more like this, not just all, but this doesn't works
-//    public List<Corporation> findByIsActive(Boolean isActive){ return corpRepository.findActive(isActive);}
+    public List<Corporation> findActive(Boolean isActive){ return corpRepository.findActive(isActive);}
 }
