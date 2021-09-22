@@ -1,4 +1,4 @@
-package com.spring.fleetfindertest.controller;
+package com.spring.fleetfinder.controller;
 
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 

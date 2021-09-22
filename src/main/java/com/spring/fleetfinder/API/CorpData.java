@@ -1,13 +1,12 @@
-package com.spring.fleetfindertest.API;
+package com.spring.fleetfinder.API;
 
-import com.spring.fleetfindertest.API.CharData;
-import com.spring.fleetfindertest.model.Corporation;
+import com.spring.fleetfinder.model.Corporation;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.CorporationApi;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.model.CorporationResponse;
 
-import static com.spring.fleetfindertest.API.AllyData.allyID;
+import static com.spring.fleetfinder.API.AllyData.allyID;
 
 public class CorpData{
     private static String datasource = "";

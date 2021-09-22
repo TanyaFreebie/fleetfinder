@@ -1,6 +1,6 @@
-package com.spring.fleetfindertest.API;
+package com.spring.fleetfinder.API;
 
-import com.spring.fleetfindertest.model.Pilot;
+import com.spring.fleetfinder.model.Pilot;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.CharacterApi;
 import net.troja.eve.esi.api.SkillsApi;
@@ -10,8 +10,8 @@ import net.troja.eve.esi.model.*;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.spring.fleetfindertest.API.AllyData.allyID;
-import static com.spring.fleetfindertest.API.CorpData.corpID;
+import static com.spring.fleetfinder.API.AllyData.allyID;
+import static com.spring.fleetfinder.API.CorpData.corpID;
 
 public class CharData {
     private static String datasource = "";

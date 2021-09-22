@@ -1,6 +1,6 @@
-package com.spring.fleetfindertest.API;
+package com.spring.fleetfinder.API;
 
-import com.spring.fleetfindertest.model.Alliance;
+import com.spring.fleetfinder.model.Alliance;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.AllianceApi;
 import net.troja.eve.esi.api.SsoApi;

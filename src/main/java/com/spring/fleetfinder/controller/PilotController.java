@@ -1,11 +1,9 @@
-package com.spring.fleetfindertest.controller;
-
-import com.spring.fleetfindertest.API.CharData;
+package com.spring.fleetfinder.controller;
 
 import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
-import com.spring.fleetfindertest.model.Auth;
-import com.spring.fleetfindertest.model.Pilot;
-import com.spring.fleetfindertest.service.PilotService;
+import com.spring.fleetfinder.model.Auth;
+import com.spring.fleetfinder.model.Pilot;
+import com.spring.fleetfinder.service.PilotService;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
