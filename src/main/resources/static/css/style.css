@@ -140,16 +140,23 @@ header a, a:visited {
 Profile
 ================================================================================================= */
 .profile_wrapper{
-    background-color: rgb(49, 49, 49);
+    background-color: black;
     padding: 100px;
 width: 80%;
-height: 900px;
+height: 100%;
+border: 2px green solid;
+}
+
+.profile-image {
+    width: 100%;
+    height: auto;
 }
 
 .image-wrapper{
     width: 250px;
     height: 250px;
-    background-color: black;
+    background-color: gray;
+    margin-left: -20px;
 }
 
 .profile-container{
@@ -158,3 +165,76 @@ height: 900px;
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+
+
+/* ==============================================================================================
+pilot list
+================================================================================================= */
+
+
+.pilot-list_container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.pilot-list_wrapper{
+    background-color: black;
+    
+}
+
+.pilot-list-image {
+    width: 100%;
+    height: auto;
+}
+
+.image-wrapper{
+    width: 25px;
+    height: 25px;
+    background-color: gray;
+    margin-left: -20px;
+}
+
+.pilot-list-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.pilot-char-wrapper{
+
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    
+  }
+  
+  #customers 
+  
+  #customers tr:nth-child(even){background-color: rgb(92, 92, 92);}
+  
+  #customers tr:hover {background-color: rgb(107, 107, 107);}
+  
+  #customers th {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: left;
+    background-color: #696969;
+    color: white;
+  }
