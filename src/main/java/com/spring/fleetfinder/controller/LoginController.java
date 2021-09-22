@@ -2,12 +2,12 @@ package com.spring.fleetfinder.controller;
 
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 
-import com.spring.fleetfindertest.API.CharData;
+import com.spring.fleetfinder.API.CharData;
 
-import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
-import com.spring.fleetfindertest.model.Auth;
-import com.spring.fleetfindertest.model.Pilot;
-import com.spring.fleetfindertest.service.PilotService;
+
+import com.spring.fleetfinder.model.Auth;
+import com.spring.fleetfinder.model.Pilot;
+import com.spring.fleetfinder.service.PilotService;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
 import net.troja.eve.esi.ApiException;
@@ -35,12 +35,11 @@ public class LoginController {
     //RequestParam ожидает параметр name в строке браузера(localhost:8080/?name=User) и создает аттрибут name который мы можем отобразить в шаблоне.
     public String profile(@RequestParam(name = "code", required = false) String authCode, @RequestParam(name = "state", required = false) String authState, Model model) throws ApiException {
         if (authCode != null) {
+            //
             final String ClientId = Auth.get().getClientId();
-
             final OAuth auth = Auth.get();
             auth.finishFlow(authCode, authState, authState);
-
-             accessToken = auth.getAccessToken();
+            accessToken = auth.getAccessToken();
             refreshToken = auth.getRefreshToken();
             model.addAttribute("code", refreshToken);
             final ApiClient userClient = new ApiClientBuilder().clientID(ClientId).refreshToken(refreshToken).build();
@@ -62,9 +61,8 @@ public class LoginController {
 
         }
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
-        //return "index";
-       // return "redirect:/profile/"+charId;
-        return "index";
+       // return "redirect:/profile/
+        return "profile";
     }
 
 //    @GetMapping("/profile/{id}")
