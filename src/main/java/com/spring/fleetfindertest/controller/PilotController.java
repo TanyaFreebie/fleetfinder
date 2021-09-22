@@ -2,6 +2,7 @@ package com.spring.fleetfindertest.controller;
 
 import com.company.TanyasManualTests.dataTypes.CharData;
 
+import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
 import com.spring.fleetfindertest.model.Auth;
 import com.spring.fleetfindertest.model.Pilot;
 import com.spring.fleetfindertest.service.PilotService;
@@ -59,6 +60,8 @@ public class PilotController {
 //            AdvertTable.timezone(charID, "Asia");
 //            AdvertTable.area(charID, "Null");
 //            AdvertTable.status(charID, true);
+            System.out.println("SOUT: " + CharTable.addDataToDb(userApi,accessToken));
+            pilotService.savePilot(CharTable.addDataToDb(userApi,accessToken));
 
         }
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
@@ -93,9 +96,10 @@ public class PilotController {
     }
 //    @GetMapping("/add")
 //    public String createPilot(Pilot pilot) throws ApiException {
-//        User.addDataToDb();
-//        System.out.println("PILOT: " + User.addDataToDb().toString());
-//        pilotService.savePilot(User.addDataToDb());
-//        return "redirect:/pilot-list";
+////        User.addDataToDb();
+////        System.out.println("PILOT: " + User.addDataToDb().toString());
+////        pilotService.savePilot(User.addDataToDb());
+////        return "redirect:/pilot-list";
+
 //    }
 }
