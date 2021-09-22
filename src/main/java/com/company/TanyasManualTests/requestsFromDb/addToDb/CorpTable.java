@@ -8,9 +8,9 @@ import net.troja.eve.esi.api.SsoApi;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static com.company.TanyasManualTests.dataTypes.AllyData.allyID;
-import static com.company.TanyasManualTests.dataTypes.CharData.charID;
-import static com.company.TanyasManualTests.dataTypes.CorpData.*;
+import static com.spring.fleetfindertest.API.AllyData.allyID;
+import static com.spring.fleetfindertest.API.CharData.charID;
+import static com.spring.fleetfindertest.API.CorpData.*;
 
 public class CorpTable {
     private static PreparedStatement ps;

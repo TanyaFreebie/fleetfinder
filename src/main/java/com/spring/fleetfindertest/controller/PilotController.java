@@ -1,6 +1,6 @@
 package com.spring.fleetfindertest.controller;
 
-import com.company.TanyasManualTests.dataTypes.CharData;
+import com.spring.fleetfindertest.API.CharData;
 
 import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
 import com.spring.fleetfindertest.model.Auth;
@@ -51,19 +51,6 @@ public class PilotController {
 
 
 
-            //запрос имени для приветствия
-            model.addAttribute("name", CharData.charName(userApi));
-//+++TEST++++
-            int charID = CharData.charID(userApi);
-            System.out.println(charID);
-            charId = charID;
-//            AdvertTable.author(charID);
-//            AdvertTable.advertText(charID, "looking for new corpmates");
-//            AdvertTable.specialization(charID, "pvp");
-//            AdvertTable.timezone(charID, "Asia");
-//            AdvertTable.area(charID, "Null");
-//            AdvertTable.status(charID, true);
-            System.out.println("SOUT: " + CharTable.addDataToDb(userApi,accessToken));
             pilotService.savePilot(CharTable.addDataToDb(userApi,accessToken));
 
         }
@@ -74,7 +61,7 @@ public class PilotController {
     }
     @GetMapping("/pilot-list")
     public String pilotList(Model model){
-        List<Pilot> pilots = pilotService.findActive(true);
+        List<Pilot> pilots = pilotService.findAll();
         model.addAttribute("pilots", pilots);
         return "pilot-list";
     }

@@ -1,4 +1,4 @@
-package com.company.TanyasManualTests.dataTypes;
+package com.spring.fleetfindertest.API;
 
 import com.spring.fleetfindertest.model.Alliance;
 import net.troja.eve.esi.ApiException;
