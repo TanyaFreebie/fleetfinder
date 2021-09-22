@@ -28,7 +28,7 @@ public class AuthController {
         if (System.getenv().get("SSO_CALLBACK_URL") != null) {
             redirectUri = System.getenv().get("SSO_CALLBACK_URL");
         } else {
-            redirectUri = "http://localhost:8080/";
+            redirectUri = "http://localhost:8080/profile/";
         }
 
 		return "redirect:"+auth.getAuthorizationUri(redirectUri, scopes, state);
