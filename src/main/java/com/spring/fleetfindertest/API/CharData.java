@@ -11,8 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 
 
-import static com.spring.fleetfinder.API.AllyData.allyID;
-import static com.spring.fleetfinder.API.CorpData.corpID;
+import static com.spring.fleetfindertest.API.AllyData.allyID;
+import static com.spring.fleetfindertest.API.CorpData.corpID;
 
 public class CharData {
     private static String datasource = "";

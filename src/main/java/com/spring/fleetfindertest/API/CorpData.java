@@ -6,7 +6,7 @@ import net.troja.eve.esi.api.CorporationApi;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.model.CorporationResponse;
 
-import static com.spring.fleetfinder.API.AllyData.allyID;
+import static com.spring.fleetfindertest.API.AllyData.allyID;
 
 public class CorpData{
     private static String datasource = "";

@@ -12,7 +12,7 @@ import static com.spring.fleetfindertest.API.AllyData.allyID;
 import static com.spring.fleetfindertest.API.CharData.charID;
 import static com.spring.fleetfindertest.API.CorpData.*;
 
-import static com.spring.fleetfinder.API.CorpData.*;
+import static com.spring.fleetfindertest.API.CorpData.*;
 
 
 public class CorpTable {
