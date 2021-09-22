@@ -1,6 +1,8 @@
 package com.spring.fleetfindertest.controller;
 
 import com.company.TanyasManualTests.dataTypes.CharData;
+
+import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
 import com.spring.fleetfindertest.model.Auth;
 import com.spring.fleetfindertest.model.Pilot;
 import com.spring.fleetfindertest.service.PilotService;
@@ -53,6 +55,16 @@ public class PilotController {
 //+++TEST++++
             int charID = CharData.charID(userApi);
             System.out.println(charID);
+            charId = charID;
+//            AdvertTable.author(charID);
+//            AdvertTable.advertText(charID, "looking for new corpmates");
+//            AdvertTable.specialization(charID, "pvp");
+//            AdvertTable.timezone(charID, "Asia");
+//            AdvertTable.area(charID, "Null");
+//            AdvertTable.status(charID, true);
+            System.out.println("SOUT: " + CharTable.addDataToDb(userApi,accessToken));
+            pilotService.savePilot(CharTable.addDataToDb(userApi,accessToken));
+
         }
         //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
         //return "index";
@@ -84,12 +96,12 @@ public class PilotController {
         //System.out.println("CHAR ID: " + charId);
         return "/profile";
     }
-    @GetMapping("/add")
-    public String createPilot(Pilot pilot) throws ApiException {
-        CharData.updateChar(userApi, accessToken);
-        System.out.println("PILOT: " + CharData.updateChar(userApi, accessToken));
-        pilotService.savePilot(CharData.updateChar(userApi, accessToken));
-        return "redirect:/pilot-list";
+//    @GetMapping("/add")
+//    public String createPilot(Pilot pilot) throws ApiException {
+////        User.addDataToDb();
+////        System.out.println("PILOT: " + User.addDataToDb().toString());
+////        pilotService.savePilot(User.addDataToDb());
+////        return "redirect:/pilot-list";
 
-    }
+//    }
 }

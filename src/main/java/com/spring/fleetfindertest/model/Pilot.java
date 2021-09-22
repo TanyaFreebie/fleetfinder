@@ -27,7 +27,8 @@ public class Pilot {
     @Column(name = "ally_id")
     private Integer allyId;
 
-
+    @Column(name="last_update")
+    private String lastUpdate;
     //char name
     //skill points
     // title of advert Ищу пвп корпу <Посмотреть адвёрт>
