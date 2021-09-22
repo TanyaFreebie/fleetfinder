@@ -1,7 +1,7 @@
-package com.spring.fleetfindertest.service;
+package com.spring.fleetfinder.service;
 
-import com.spring.fleetfindertest.model.Pilot;
-import com.spring.fleetfindertest.repository.PilotRepository;
+import com.spring.fleetfinder.model.Pilot;
+import com.spring.fleetfinder.repository.PilotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

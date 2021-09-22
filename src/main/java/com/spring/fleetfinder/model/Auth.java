@@ -1,4 +1,4 @@
-package com.spring.fleetfindertest.model;
+package com.spring.fleetfinder.model;
 
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;

@@ -1,6 +1,6 @@
-package com.spring.fleetfindertest.repository;
+package com.spring.fleetfinder.repository;
 
-import com.spring.fleetfindertest.model.Pilot;
+import com.spring.fleetfinder.model.Pilot;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

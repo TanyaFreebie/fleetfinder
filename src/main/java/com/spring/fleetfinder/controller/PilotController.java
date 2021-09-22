@@ -1,22 +1,13 @@
-package com.spring.fleetfindertest.controller;
+package com.spring.fleetfinder.controller;
 
-import com.spring.fleetfindertest.API.CharData;
-
-import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
-import com.spring.fleetfindertest.model.Auth;
-import com.spring.fleetfindertest.model.Pilot;
-import com.spring.fleetfindertest.service.PilotService;
-import net.troja.eve.esi.ApiClient;
-import net.troja.eve.esi.ApiClientBuilder;
-import net.troja.eve.esi.ApiException;
+import com.spring.fleetfinder.model.Pilot;
+import com.spring.fleetfinder.service.PilotService;
 import net.troja.eve.esi.api.SsoApi;
-import net.troja.eve.esi.auth.OAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

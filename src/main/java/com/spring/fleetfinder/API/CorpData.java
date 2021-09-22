@@ -1,13 +1,10 @@
-package com.spring.fleetfindertest.API;
+package com.spring.fleetfinder.API;
 
-import com.spring.fleetfindertest.API.CharData;
-import com.spring.fleetfindertest.model.Corporation;
+import com.spring.fleetfinder.model.Corporation;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.CorporationApi;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.model.CorporationResponse;
-
-import static com.spring.fleetfindertest.API.AllyData.allyID;
 
 public class CorpData{
     private static String datasource = "";
@@ -52,7 +49,7 @@ public class CorpData{
         corp.setCorpName(corpName(api));
         corp.setCorpTicker(corpTicker(api));
         corp.setMemberCount(memberCount(api));
-        corp.setAllyId(allyID(api));
+        corp.setAllyId(AllyData.allyID(api));
 
 
         return corp;
