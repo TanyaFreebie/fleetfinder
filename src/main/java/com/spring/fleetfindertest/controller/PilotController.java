@@ -39,7 +39,7 @@ public class PilotController {
         this.allianceService = allianceService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/profile/")
     //RequestParam ожидает параметр name в строке браузера(localhost:8080/?name=User) и создает аттрибут name который мы можем отобразить в шаблоне.
     public String index(@RequestParam(name = "code", required = false) String authCode, @RequestParam(name = "state", required = false) String authState, Model model) throws ApiException {
         charId = 0;
