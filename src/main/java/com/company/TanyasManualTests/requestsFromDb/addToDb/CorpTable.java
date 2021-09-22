@@ -8,8 +8,9 @@ import net.troja.eve.esi.api.SsoApi;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static com.spring.fleetfinder.API.AllyData.allyID;
-import static com.spring.fleetfinder.API.CharData.charID;
+import static com.spring.fleetfindertest.API.AllyData.allyID;
+import static com.spring.fleetfindertest.API.CharData.charID;
+import static com.spring.fleetfindertest.API.CorpData.*;
 
 public class CorpTable {
     private static PreparedStatement ps;
@@ -50,6 +51,7 @@ public class CorpTable {
             OutputMessages.error();
         }
     }
+
 
     public static void updateCorp(SsoApi api){
         try {

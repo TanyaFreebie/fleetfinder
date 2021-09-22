@@ -1,4 +1,4 @@
-package com.spring.fleetfinder.model;
+package com.spring.fleetfindertest.model;
 
 import lombok.Data;
 

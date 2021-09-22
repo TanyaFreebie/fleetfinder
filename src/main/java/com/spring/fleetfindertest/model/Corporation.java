@@ -1,4 +1,4 @@
-package com.spring.fleetfinder.model;
+package com.spring.fleetfindertest.model;
 
 import lombok.Data;
 
@@ -9,10 +9,22 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "advertisement")
-public class Advertisement {
+@Table(name = "corporations")
+public class Corporation {
     @Id
-    private Long authorId;
+    private Long corpId;
+
+    @Column(name = "corp_name")
+    private String corpName;
+
+    @Column(name = "corp_ticker")
+    private String corpTicker;
+
+    @Column(name = "member_count")
+    private Integer memberCount;
+
+    @Column(name = "ally_id")
+    private Integer allyId;
 
     @Column (name = "timezone")
     private String timeZone;
@@ -23,9 +35,7 @@ public class Advertisement {
     @Column(name = "specialization")
     private String specialization;
 
-    @Column(name = "advert_text")
-    private String advertText;
-
     @Column(name = "is_active")
     private Boolean isActive;
+
 }

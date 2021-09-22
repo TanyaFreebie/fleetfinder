@@ -1,16 +1,17 @@
 package com.company.TanyasManualTests.requestsFromDb.addToDb;
 
-import com.spring.fleetfinder.API.AllyData;
+import com.spring.fleetfindertest.API.AllyData;
 import com.company.dbHelper.dbConnection.DbConnection;
 import com.company.helpers.OutputMessages;
-import com.spring.fleetfinder.model.Pilot;
+import com.spring.fleetfindertest.model.Pilot;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.SsoApi;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static com.spring.fleetfinder.API.CorpData.corpID;
+import static com.spring.fleetfindertest.API.CharData.*;
+import static com.spring.fleetfindertest.API.CorpData.corpID;
 
 
 public class CharTable {

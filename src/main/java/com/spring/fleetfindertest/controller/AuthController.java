@@ -1,6 +1,6 @@
-package com.spring.fleetfinder.controller;
+package com.spring.fleetfindertest.controller;
 
-import com.spring.fleetfinder.model.Auth;
+import com.spring.fleetfindertest.model.Auth;
 import net.troja.eve.esi.auth.OAuth;
 import net.troja.eve.esi.auth.SsoScopes;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
-package com.spring.fleetfinder.API;
+package com.spring.fleetfindertest.API;
 
-import com.spring.fleetfinder.model.Pilot;
+import com.spring.fleetfindertest.model.Pilot;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.CharacterApi;
 import net.troja.eve.esi.api.SkillsApi;

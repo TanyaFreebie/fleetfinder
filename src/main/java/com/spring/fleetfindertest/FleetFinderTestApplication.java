@@ -1,4 +1,4 @@
-package com.spring.fleetfinder;
+package com.spring.fleetfindertest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,7 +1,7 @@
-package com.spring.fleetfinder.controller;
+package com.spring.fleetfindertest.controller;
 
-import com.spring.fleetfinder.model.Pilot;
-import com.spring.fleetfinder.service.PilotService;
+import com.spring.fleetfindertest.model.Pilot;
+import com.spring.fleetfindertest.service.PilotService;
 import net.troja.eve.esi.api.SsoApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
