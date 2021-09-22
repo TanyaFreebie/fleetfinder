@@ -136,8 +136,7 @@ public class PilotController {
     public String createPilotAdvertisement(Pilot pilot){
         //Pilot pilot = pilotService.findById((long) charId);
         //model.addAttribute("pilot",pilot);
-        pilot.setCharId((long) charId);
-        System.out.println("SOUT ADVERT: " + pilot.getAdvertText());
+        System.out.println("PILOT: " + pilot.toString());
         pilotService.savePilot(pilot);
         return "redirect:/pilot-list";
     }
