@@ -8,6 +8,10 @@ import net.troja.eve.esi.api.SsoApi;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+
+
+
+
 import static com.spring.fleetfindertest.API.AllyData.*;
 
 public class AllianceTable {

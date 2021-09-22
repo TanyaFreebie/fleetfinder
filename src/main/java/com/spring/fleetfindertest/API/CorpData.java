@@ -6,6 +6,8 @@ import net.troja.eve.esi.api.CorporationApi;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.model.CorporationResponse;
 
+import static com.spring.fleetfinder.API.AllyData.allyID;
+
 public class CorpData{
     private static String datasource = "";
     public static CorporationApi corpAPI = new CorporationApi();
@@ -49,7 +51,8 @@ public class CorpData{
         corp.setCorpName(corpName(api));
         corp.setCorpTicker(corpTicker(api));
         corp.setMemberCount(memberCount(api));
-        corp.setAllyId(AllyData.allyID(api));
+        corp.setAllyId(allyID(api));
+
 
 
         return corp;
