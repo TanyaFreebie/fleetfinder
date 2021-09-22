@@ -2,6 +2,10 @@ package com.spring.fleetfinder.model;
 
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
+
+import net.troja.eve.esi.ApiException;
+import net.troja.eve.esi.api.SsoApi;
+
 import net.troja.eve.esi.auth.OAuth;
 
 public class Auth {

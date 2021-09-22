@@ -54,6 +54,7 @@ public class CorpData{
         corp.setAllyId(allyID(api));
 
 
+
         return corp;
     }
 }
