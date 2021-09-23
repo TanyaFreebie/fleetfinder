@@ -1,5 +1,6 @@
-package com.company.TanyasManualTests.dataTypes;
+package com.spring.fleetfindertest.API;
 
+import com.spring.fleetfindertest.model.Pilot;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.CharacterApi;
 import net.troja.eve.esi.api.SkillsApi;
@@ -8,6 +9,8 @@ import net.troja.eve.esi.model.*;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static com.spring.fleetfindertest.API.CorpData.corpID;
 
 public class CharData {
     private static String datasource = "";
@@ -64,20 +67,29 @@ public class CharData {
         //available sizes 256, 128, 64
         return "https://images.evetech.net/characters/" + charID(api) + "/portrait?size=" + size;
     }
-
-
-    //НЕ ГОТОВО надо создать чара и затестить - это для создания
-    // страничек корп и алиансев и генерации профилей со стороны юзера
-
-    public static String cropRole(SsoApi api, String accessToken)throws ApiException{
-        final CharacterRolesResponse charRoles =charAPI.getCharactersCharacterIdRoles(charID(api), " ", null, accessToken);;
-        for (CharacterRolesResponse.RolesEnum role : charRoles.getRoles()) {
-            System.out.println(role);
-        }
-
-        return " ";
+    public static Pilot addCharacterDataToDb(SsoApi api, String accessToken) throws ApiException {
+        Pilot pilot = new Pilot();
+        pilot.setCharId((long) charID(api));
+        pilot.setCharName(charName(api));
+        pilot.setCorpId(corpID(api));
+        pilot.setCorpAccess(corpProfileAccess(api, accessToken));
+        pilot.setAllyId(AllyData.allyID(api));
+        pilot.setTotalSp(charTotalSkillPoints(api, accessToken));
+        //pilot.setLastUpdate();
+        return pilot;
     }
 
+//    public static Pilot updateChar(SsoApi api, String accessToken) throws ApiException{
+//        Pilot character = new Pilot();
+//        character.setCharId((long) charID(api));
+//        character.setCharName(charName(api));
+//        character.setTotalSp(charTotalSkillPoints(api, accessToken));
+//        character.setCorpId(corpID(api));
+//        character.setCorpAccess(corpProfileAccess(api, accessToken));
+//        character.setAllyId(allyID(api));
+//
+//        return character;
+//    }
     //END OF CLASS
 
 }
