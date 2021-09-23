@@ -1,6 +1,6 @@
 package com.spring.fleetfindertest.controller;
 
-import com.company.TanyasManualTests.dataTypes.CharData;
+import com.spring.fleetfindertest.API.CharData;
 
 import com.company.TanyasManualTests.requestsFromDb.addToDb.AllianceTable;
 import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;

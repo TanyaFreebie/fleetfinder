@@ -1,20 +1,17 @@
 package com.company.TanyasManualTests.requestsFromDb.addToDb;
 
-import com.company.TanyasManualTests.dataTypes.AllyData;
 import com.company.dbHelper.dbConnection.DbConnection;
 import com.company.helpers.OutputMessages;
 import com.spring.fleetfindertest.model.Corporation;
-import com.spring.fleetfindertest.model.Pilot;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.SsoApi;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static com.company.TanyasManualTests.dataTypes.AllyData.allyID;
-import static com.company.TanyasManualTests.dataTypes.CharData.*;
-import static com.company.TanyasManualTests.dataTypes.CharData.charTotalSkillPoints;
-import static com.company.TanyasManualTests.dataTypes.CorpData.*;
+import static com.spring.fleetfindertest.API.AllyData.allyID;
+import static com.spring.fleetfindertest.API.CharData.*;
+import static com.spring.fleetfindertest.API.CorpData.*;
 
 public class CorpTable {
     private static PreparedStatement ps;

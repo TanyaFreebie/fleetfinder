@@ -1,19 +1,5 @@
 package com.spring.fleetfindertest.controller;
 
-import com.company.TanyasManualTests.dataTypes.CharData;
-import com.spring.fleetfindertest.model.Auth;
-import net.troja.eve.esi.ApiClient;
-import net.troja.eve.esi.ApiClientBuilder;
-import net.troja.eve.esi.ApiException;
-import net.troja.eve.esi.api.SsoApi;
-import net.troja.eve.esi.auth.OAuth;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 
 //@Controller
