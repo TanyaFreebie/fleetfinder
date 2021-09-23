@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Create advertisement</title>
+</head>
+<body>
+<p>CREATE HERE</p>
+<form action="#" th:action="@{/create-advertisement}" th:object="${pilot}" method="post">
+<!--<label for="charId">Char Id</label>-->
+    <label for="advertText">Advert Text</label>
+    <br/>
+    <label for="charId">Char id</label>
+    <input readonly type="number" th:field="*{charId}" id="charId">
+    <br/>
+    <label for="charName">Char name</label>
+    <input readonly type="text" th:field="*{charName}" id="charName">
+    <br/>
+    <label for="totalSp">Total sp</label>
+    <input readonly type="number" th:field="*{totalSp}" id="totalSp">
+    <br/>
+    <label for="corpId">Corp id</label>
+    <input readonly type="number" th:field="*{corpId}" id="corpId">
+    <br/>
+    <label for="corpAccess">Corp Access</label>
+    <input readonly type="number" th:field="*{corpAccess}" id="corpAccess">
+    <br/>
+    <label for="allyId">Ally id</label>
+    <input readonly type="number" th:field="*{allyId}" id="allyId">
+    <br/>
+<!--    <label for="lastUpdate">Last update</label>-->
+<!--    <input readonly type="text" th:field="*{lastUpdate}" id="lastUpdate">-->
+<!--    <br/>-->
+    <label for="advertText">Advert text</label>
+    <input type="text" th:field="*{advertText}" id="advertText" placeholder="Advert Text">
+    <br/>
+    <input type="submit" value="Create advertisement">
+</form>
+</body>
+</html>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class PilotController {
         this.pilotService = pilotService;
     }
 
-//    @GetMapping("/")
+//    @GetMapping("/profile/")
 //    //RequestParam ожидает параметр name в строке браузера(localhost:8080/?name=User) и создает аттрибут name который мы можем отобразить в шаблоне.
 //    public String index(@RequestParam(name = "code", required = false) String authCode, @RequestParam(name = "state", required = false) String authState, Model model) throws ApiException {
 //        charId = 0;
@@ -41,7 +42,6 @@ public class PilotController {
 //            userApi = new SsoApi(userClient);
 //
 //
-//
 //            //запрос имени для приветствия
 //            model.addAttribute("name", CharData.charName(userApi));
 ////+++TEST++++
@@ -54,22 +54,35 @@ public class PilotController {
 ////            AdvertTable.timezone(charID, "Asia");
 ////            AdvertTable.area(charID, "Null");
 ////            AdvertTable.status(charID, true);
-//            System.out.println("SOUT: " + CharTable.addDataToDb(userApi,accessToken));
-//            pilotService.savePilot(CharTable.addDataToDb(userApi,accessToken));
+//            System.out.println("SOUT CHAR: " + CharTable.addCharacterDataToDb(userApi,accessToken));
+//            pilotService.savePilot(CharTable.addCharacterDataToDb(userApi,accessToken));
 //
+//            System.out.println("SOUT CORP: " + CorpTable.addCorporationDataToDb(userApi,accessToken));
+//            corporationService.saveCorporation(CorpTable.addCorporationDataToDb(userApi,accessToken));
+//
+//            System.out.println("SOUT ALLIANCE: " + AllianceTable.addAllianceDataToDb(userApi,accessToken));
+//            if (AllianceTable.addAllianceDataToDb(userApi,accessToken) != null){
+//                System.out.println("SOUT ALLIANCE: " + AllianceTable.addAllianceDataToDb(userApi,accessToken));
+//                allianceService.saveAlliance(AllianceTable.addAllianceDataToDb(userApi, accessToken));
+//            }
+//            //allianceService.saveAlliance(AllianceTable.addAllianceDataToDb(userApi, accessToken));
 //        }
 //        //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
-//        //return "index";
+//        // return "index";
 //        // return "redirect:/profile/"+charId;
-//        return "index";
+//        List<Pilot> pilots = pilotService.findAll();
+//        model.addAttribute("pilots", pilots);
+//        return "pilot-list";
 //    }
+    //Pilots button in navbar
     @GetMapping("/pilot-list")
     public String pilotList(Model model){
         List<Pilot> pilots = pilotService.findAll();
         model.addAttribute("pilots", pilots);
         return "pilot-list";
     }
-    @GetMapping("/pilot/{id}")
+    //PILOT-LIST -> (Blue button) Profile
+    @GetMapping("/profile/{id}")
     public String getPilot(@PathVariable("id") Integer id, Model model){
         //I need to convert int value of Pilot`s Id to Long -> So I make id as String and then change id to Long
         System.out.println("!!!!!!!!!!!!!!!!!!!ID!!!!!!!!!!!!!!!!!");
@@ -79,7 +92,53 @@ public class PilotController {
         System.out.println("!!!!!!!!!!!!!!!!!!!PILOT!!!!!!!!!!!!!!!!!");
         pilot.toString();
         model.addAttribute("pilot", pilot);
-        return "pilot";
+        return "/profile";
     }
-
+    //Profile button in navbar
+    @GetMapping("profile")
+    public String returnPilotPage(Model model){
+        Pilot pilot = pilotService.findById((long) charId);
+        model.addAttribute("pilot", pilot);
+        //System.out.println("CHAR ID: " + charId);
+        return "/profile";
+    }
+    //PILOT-LIST -> (Blue button) Advertisement
+    @GetMapping("/pilot-advertisement/{id}")
+    public String getPilotAdvertisementFromList(@PathVariable("id") Integer id, Model model){
+        Long longId = Long.valueOf(id);
+        Pilot pilot = pilotService.findById(longId);
+        model.addAttribute("pilot", pilot);
+        return "/pilot-advertisement";
+    }
+    //PROFILE (navbar) -> Create advertisement IN PROFILE
+    @GetMapping("/create-advertisement")
+    public String getPilotAdvertisement(Model model){
+        Pilot pilot = pilotService.findById((long) charId);
+        model.addAttribute("pilot", pilot);
+        return "create-advertisement";
+    }
+    @PostMapping("/create-advertisement")
+    public String createPilotAdvertisement(Pilot pilot){
+        //Pilot pilot = pilotService.findById((long) charId);
+        //model.addAttribute("pilot",pilot);
+        System.out.println("PILOT: " + pilot.toString());
+        pilotService.savePilot(pilot);
+        return "redirect:/pilot-list";
+    }
+    ////PROFILE (navbar) -> Create advertisement IN PROFILE -> Create advertisement IN CREATE ADVERTISEMENT
+//    @PostMapping("/create-advertisement")
+//    public String savePilotAdvertisement(Model model){
+//        Pilot pilot = pilotService.findById((long) charId);
+//        model.addAttribute("pilot", pilot);
+//        pilotService.savePilot(pilot);
+//        System.out.println("PILOT ADVERT TEXT: " + pilot.getAdvertText());
+//        return "redirect:/pilot-list";
+//    }
+//    @GetMapping("/add")
+//    public String createPilot(Pilot pilot) throws ApiException {
+////        User.addDataToDb();
+////        System.out.println("PILOT: " + User.addDataToDb().toString());
+////        pilotService.savePilot(User.addDataToDb());
+////        return "redirect:/pilot-list";
+//    }
 }
