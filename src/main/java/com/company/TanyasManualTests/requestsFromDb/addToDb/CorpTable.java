@@ -19,16 +19,16 @@ import static com.company.TanyasManualTests.dataTypes.CorpData.*;
 public class CorpTable {
     private static PreparedStatement ps;
     private static ResultSet rs;
-    public static Corporation addCorporationDataToDb(SsoApi api, String accessToken) throws ApiException {
-        Corporation corporation = new Corporation();
-        corporation.setCorpId((long) corpID(api));
-        corporation.setCorpName(corpName(api));
-        corporation.setCorpTicker(corpTicker(api));
-        corporation.setMemberCount((long) memberCount(api));
-        corporation.setAllyId((long) allyID(api));
-
-        return corporation;
-    }
+//    public static Corporation addCorporationDataToDb(SsoApi api, String accessToken) throws ApiException {
+//        Corporation corporation = new Corporation();
+//        corporation.setCorpId((long) corpID(api));
+//        corporation.setCorpName(corpName(api));
+//        corporation.setCorpTicker(corpTicker(api));
+//        corporation.setMemberCount((long) memberCount(api));
+//        corporation.setAllyId((long) allyID(api));
+//
+//        return corporation;
+//    }
     public static void update(SsoApi api) throws ApiException {
         int id = 0;
         try {

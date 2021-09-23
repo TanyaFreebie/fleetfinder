@@ -1,7 +1,9 @@
 package com.spring.fleetfindertest.controller;
 
+import com.company.TanyasManualTests.dataTypes.AllyData;
 import com.company.TanyasManualTests.dataTypes.CharData;
 
+import com.company.TanyasManualTests.dataTypes.CorpData;
 import com.company.TanyasManualTests.requestsFromDb.addToDb.AllianceTable;
 import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
 import com.company.TanyasManualTests.requestsFromDb.addToDb.CorpTable;
@@ -38,7 +40,12 @@ public class PilotController {
         this.corporationService = corporationService;
         this.allianceService = allianceService;
     }
-
+    @GetMapping("/")
+    public String homePage(Model model){
+        List<Pilot> pilots = pilotService.findAll();
+        model.addAttribute("pilots", pilots);
+        return "pilot-list";
+    }
     @GetMapping("/profile/")
     //RequestParam ожидает параметр name в строке браузера(localhost:8080/?name=User) и создает аттрибут name который мы можем отобразить в шаблоне.
     public String index(@RequestParam(name = "code", required = false) String authCode, @RequestParam(name = "state", required = false) String authState, Model model) throws ApiException {
@@ -69,16 +76,16 @@ public class PilotController {
 //            AdvertTable.timezone(charID, "Asia");
 //            AdvertTable.area(charID, "Null");
 //            AdvertTable.status(charID, true);
-            System.out.println("SOUT CHAR: " + CharTable.addCharacterDataToDb(userApi,accessToken));
-            pilotService.savePilot(CharTable.addCharacterDataToDb(userApi,accessToken));
+            System.out.println("SOUT CHAR: " + CharData.addCharacterDataToDb(userApi,accessToken));
+            pilotService.savePilot(CharData.addCharacterDataToDb(userApi,accessToken));
 
-            System.out.println("SOUT CORP: " + CorpTable.addCorporationDataToDb(userApi,accessToken));
-            corporationService.saveCorporation(CorpTable.addCorporationDataToDb(userApi,accessToken));
+            System.out.println("SOUT CORP: " + CorpData.addCorporationDataToDb(userApi,accessToken));
+            corporationService.saveCorporation(CorpData.addCorporationDataToDb(userApi,accessToken));
 
-            System.out.println("SOUT ALLIANCE: " + AllianceTable.addAllianceDataToDb(userApi,accessToken));
-            if (AllianceTable.addAllianceDataToDb(userApi,accessToken) != null){
-                System.out.println("SOUT ALLIANCE: " + AllianceTable.addAllianceDataToDb(userApi,accessToken));
-                allianceService.saveAlliance(AllianceTable.addAllianceDataToDb(userApi, accessToken));
+            System.out.println("SOUT ALLIANCE: " + AllyData.addAllianceDataToDb(userApi,accessToken));
+            if (AllyData.addAllianceDataToDb(userApi,accessToken) != null){
+                System.out.println("SOUT ALLIANCE: " + AllyData.addAllianceDataToDb(userApi,accessToken));
+                allianceService.saveAlliance(AllyData.addAllianceDataToDb(userApi, accessToken));
             }
             //allianceService.saveAlliance(AllianceTable.addAllianceDataToDb(userApi, accessToken));
         }

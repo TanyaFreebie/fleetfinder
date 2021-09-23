@@ -44,7 +44,16 @@ public class CorpData{
     public static String eveWhoLink(SsoApi api) throws ApiException {
         return "https://evewho.com/corporation/" + corpID(api);
     }
+    public static Corporation addCorporationDataToDb(SsoApi api, String accessToken) throws ApiException {
+        Corporation corporation = new Corporation();
+        corporation.setCorpId((long) corpID(api));
+        corporation.setCorpName(corpName(api));
+        corporation.setCorpTicker(corpTicker(api));
+        corporation.setMemberCount((long) memberCount(api));
+        corporation.setAllyId((long) allyID(api));
 
+        return corporation;
+    }
 //    public static Corporation updateCorp(SsoApi api) throws ApiException{
 //        Corporation corp = new Corporation();
 //        corp.setCorpId((long)corpID(api));
