@@ -140,11 +140,11 @@ header a, a:visited {
 Profile
 ================================================================================================= */
 .profile_wrapper{
-    background-color: black;
+    background-color: rgb(133, 133, 133);
     padding: 100px;
 width: 80%;
 height: 100%;
-border: 2px green solid;
+
 }
 
 .profile-image {
@@ -185,7 +185,7 @@ pilot list
 
 .pilot-list_wrapper{
     background-color: black;
-    
+
 }
 
 .pilot-list-image {
@@ -216,21 +216,21 @@ pilot list
     border-collapse: collapse;
     width: 100%;
   }
-  
+
   #customers td, #customers th {
     border: 1px solid #ddd;
     padding: 20px;
     padding-left: 40px;
     padding-right: 40px;
-    
+
   }
-  
-  #customers 
-  
+
+  #customers
+
   #customers tr:nth-child(even){background-color: rgb(92, 92, 92);}
-  
+
   #customers tr:hover {background-color: rgb(107, 107, 107);}
-  
+
   #customers th {
     padding-top: 40px;
     padding-bottom: 40px;

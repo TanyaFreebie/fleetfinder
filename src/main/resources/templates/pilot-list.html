@@ -15,57 +15,58 @@
     <div th:switch="${pilots}">
         <h2 th:case="null">No users found!</h2>
         <div th:case="*">
-            
+
 
             <div class="pilot-list_container">
-    
+
                 <div class="pilot-list_wrapper">
-                <div class="pilot-list-container">
-                <div class="text-wrapper">
+                    <div class="pilot-list-container">
+                        <div class="text-wrapper">
 
-            <table id="customers">
-                <thead>
-                <tr>
+                            <table id="customers">
+                                <thead>
+                                <tr>
 
-                    <th> Image </th>
-                    <th>Char name</th>
-                    <th>Corp Id</th>
-                    <th>Corp Access</th>
-                    <th>Ally Id</th>
-                    <th>Total Sp</th>
-                    <th></th>
-                    <!-- <th>Ally name</th>-->
-                </tr>
-                </thead>
-                <tbody>
+                                    <th> Image </th>
 
-                <tr th:each="pilot : ${pilots}">
-                   <td> <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=64'}"/></td>
-                    <td th:text="${pilot.charName}"></td>
-                    <td th:text="${pilot.corpId}"></td>
-                    <!-- <td th:text="${pilot.corpName}"></td>-->
-                    <td th:text="${pilot.corpAccess}"></td>
-                    <td th:text="${pilot.allyId}"></td>
-                    <td th:text="${pilot.totalSp}"></td>
-                     <!--<td th:text="${pilot.allyName}"></td>-->
-                    <td><a th:href="@{pilot/{id}(id=${pilot.charId})}">more</a></td>
-                    <!-- <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td> -->
-                </tr>
-                </tbody>
-            </table>
+                                    <th>Char name</th>
+                                    <th>Corp Id</th>
+                                    <th>Corp Access</th>
+                                    <th>Ally Id</th>
+                                    <th>Total Sp</th>
+                                    <th></th>
+                                    <!-- <th>Ally name</th>-->
+                                </tr>
+                                </thead>
+                                <tbody>
 
-        </div>
-    </div>
-        </div>
-        <div class="front">
-            <div class="stars"></div>
-            <div class="twinkling"></div>
-        </div>
-    </div>
+                                <tr th:each="pilot : ${pilots}">
+                                    <td> <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=64'}"/></td>
+                                    <td th:text="${pilot.charName}"></td>
+                                    <td th:text="${pilot.corpId}"></td>
+                                    <!-- <td th:text="${pilot.corpName}"></td>-->
+                                    <td th:text="${pilot.corpAccess}"></td>
+                                    <td th:text="${pilot.allyId}"></td>
+                                    <td th:text="${pilot.totalSp}"></td>
+                                    <!--<td th:text="${pilot.allyName}"></td>-->
+                                    <td><a th:href="@{pilot-advertisement/{id}(id=${pilot.charId})}">Advertisement</a></td>
+                                    <!-- <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td> -->
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="front">
+                    <div class="stars"></div>
+                    <div class="twinkling"></div>
+                </div>
+            </div>
 
         </div>
         <!-- <p><a href="/user-create">Create user</a></p>-->
-     </div>
+    </div>
 </main><!-- /.container -->
- </body>
- </html>
+</body>
+</html>

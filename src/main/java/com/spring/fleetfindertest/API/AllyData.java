@@ -41,13 +41,25 @@ private static AllianceApi alliAPI = new AllianceApi();
         //available sizes 256, 128, 64
         return "https://images.evetech.net/alliances/" + allyID(api) + "/logo?size=" + size;
     }
-
-    public static Alliance updateAlly(SsoApi api) throws ApiException{
-     Alliance ally = new Alliance();
-     ally.setAllyId((long) allyID(api));
-     ally.setAllyName(allyName(api));
-     ally.setAllyTicker(allyTicker(api));
-
-        return ally;
+    public static Alliance addAllianceDataToDb(SsoApi api, String accessToken) throws ApiException {
+        if ((long) allyID(api) != 0) {
+            Alliance alliance = new Alliance();
+            alliance.setAllyId((long) allyID(api));
+            alliance.setAllyName(allyName(api));
+            alliance.setAllyTicker(allyTicker(api));
+            //alliance.setLastUpdate();
+            return alliance;
+        }
+        else{
+            return null;
+        }
     }
+//    public static Alliance updateAlly(SsoApi api) throws ApiException{
+//     Alliance ally = new Alliance();
+//     ally.setAllyId((long) allyID(api));
+//     ally.setAllyName(allyName(api));
+//     ally.setAllyTicker(allyTicker(api));
+//
+//        return ally;
+//    }
 }
