@@ -22,27 +22,25 @@
                 </div>
             </div>
             <div class="text-wrapper">
-                <p>CREATE HERE</p>
-                <form action="#" th:action="@{/create-advertisement}" th:object="${pilot}" method="post">
+                <p><b>CREATE HERE</b></p>
+                <form class="regular-text" action="#" th:action="@{/create-advertisement}" th:object="${pilot}" method="post">
 
 
-                    <label for="charName">Character</label>
-                    <input readonly type="text" th:field="*{charName}" id="charName">
-                    <br/>
-                    <label for="charName">Skill Points</label>
-                    <input readonly type="number" th:field="*{totalSp}" id="totalSp">
-                    <br/>
-                    <label for="specialization">Specialization</label>
+                    <!--Статичный текст-->
+                    <p><b>Character:</b> <span th:utext="${pilot.charName}"></span></p>
+                    <p><b>Skill Points:</b> <span th:utext="${pilot.totalSp}"></span></p>
+                    <!-- поля для заполнения-->
+                    <label for="specialization"><b>Specialization : </b></label>
                     <input type="text" th:field="*{specialization}" id="specialization" placeholder="specialization">
                     <br/>
-                    <label for="area">Area of Operations</label>
+                    <label for="area"><b>Area of Operations : </b></label>
                     <input type="text" th:field="*{specialization}" id="area" placeholder="area">
                     <br/>
-                    <label for="timeZone">Time Zone</label>
+                    <label for="timeZone"><b>Time Zone : </b></label>
                     <input type="text" th:field="*{specialization}" id="timeZone" placeholder="timeZone">
                     <br/>
 
-                    <label for="advertText">BIO</label>
+                    <label for="advertText"><b>BIO : </b></label>
                     <input type="text" th:field="*{advertText}" id="advertText" placeholder="Advert Text">
                     <br/>
 <!--                    кнопки две, но ни одна не работает-->
