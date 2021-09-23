@@ -138,14 +138,14 @@ public class PilotController {
         model.addAttribute("pilot", pilot);
         return "create-advertisement";
     }
-    @PostMapping("/create-advertisement")
-    public String createPilotAdvertisement(Pilot pilot){
-        //Pilot pilot = pilotService.findById((long) charId);
-        //model.addAttribute("pilot",pilot);
-        System.out.println("PILOT: " + pilot.toString());
-        pilotService.savePilot(pilot);
-        return "redirect:/pilot-list";
-    }
+//    @PostMapping("/create-advertisement")
+//    public String createPilotAdvertisement(Pilot pilot){
+//        //Pilot pilot = pilotService.findById((long) charId);
+//        //model.addAttribute("pilot",pilot);
+//        System.out.println("PILOT: " + pilot.toString());
+//        pilotService.savePilot(pilot);
+//        return "redirect:/pilot-list";
+//    }
     ////PROFILE (navbar) -> Create advertisement IN PROFILE -> Create advertisement IN CREATE ADVERTISEMENT
 //    @PostMapping("/create-advertisement")
 //    public String savePilotAdvertisement(Model model){
