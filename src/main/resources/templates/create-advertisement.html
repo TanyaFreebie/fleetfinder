@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-
+<header th:insert="./fragments/navbar.html :: nav"> </header>
 
 <div class="container">
 
@@ -45,11 +45,12 @@
                     <label for="advertText">BIO</label>
                     <input type="text" th:field="*{advertText}" id="advertText" placeholder="Advert Text">
                     <br/>
-                    //кнопки две, но ни одна не работает
-                    //подозреваю, что правильная первая, ибо она врубает редирект
+<!--                    кнопки две, но ни одна не работает-->
+<!--                    подозреваю, что правильная первая, ибо она-->
+<!--                    врубает редирект на эрор-->
                     <input type="submit" value="Create advertisement">
                 </form>
-                //эта кнопка тут просто для красотыб ибо ничего не происходит
+<!--                эта кнопка тут просто для красотыб ибо ничего не происходит-->
                 <form action="create-advertisement">
                     <input type="submit" value="Create advertisement">
                 </form>
