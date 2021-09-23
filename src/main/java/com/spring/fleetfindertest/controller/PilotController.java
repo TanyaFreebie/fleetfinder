@@ -64,7 +64,7 @@ public class PilotController {
 
 
             //запрос имени для приветствия
-            model.addAttribute("name", CharData.charName(userApi));
+
 //+++TEST++++
             int charID = CharData.charID(userApi);
             System.out.println(charID);
@@ -124,12 +124,12 @@ public class PilotController {
         return "/profile";
     }
     //PILOT-LIST -> (Blue button) Advertisement
-    @GetMapping("/pilot-advertisement/{id}")
+    @GetMapping("/pilot/{id}")
     public String getPilotAdvertisementFromList(@PathVariable("id") Integer id, Model model){
         Long longId = Long.valueOf(id);
         Pilot pilot = pilotService.findById(longId);
         model.addAttribute("pilot", pilot);
-        return "/pilot-advertisement";
+        return "/pilot";
     }
     //PROFILE (navbar) -> Create advertisement IN PROFILE
     @GetMapping("/create-advertisement")

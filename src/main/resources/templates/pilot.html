@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:>
 <head>
     <meta charset="UTF-8">
@@ -12,36 +12,45 @@
 
 </head>
 <body>
-    <header th:insert="./fragments/navbar.html :: nav"> </header>
-    <!--  profile/charId 31581355 -> propisat iz logina if id != access id = redirect to mainPage -->
-    <br/>
-    <br/>
-    <br/>
-    <div class="container">
-    
+<header th:insert="./fragments/navbar.html :: nav"> </header>
+<!--  profile/charId 31581355 -> propisat iz logina if id != access id = redirect to mainPage -->
+<br/>
+<br/>
+<br/>
+<div class="container">
+
     <div class="profile_wrapper">
-    <div class="profile-container">
-        <div class="image-wrapper">
-            <div class="regular-text" th:object = "${pilot}">
-                <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=256'}"/>
+        <div class="profile-container">
+            <div class="image-wrapper">
+                <div class="regular-text" th:object = "${pilot}">
+                    <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=256'}"/>
+                    <a th:href="@{'https://evewho.com/character/' + ${pilot.charId}}">EveWho.com</a>
+                    <a th:href="@{'https://zkillboard.com/character/' + ${pilot.charId}}">Zkillboard.com</a>
+                </div>
+            </div>
+            <div class="text-wrapper">
+                <div class="regular-text" th:object = "${pilot}">
+
+                    <p><b>Character:</b> <span th:utext="${pilot.charName}"></span></p>
+                    <p><b>Skill Points:</b> <span th:utext="${pilot.totalSp}"></span></p>
+                    <p><b>Specialization:</b> <span th:utext="${pilot.specialization}"></span></p>
+                    <p><b>Area of Operations:</b> <span th:utext="${pilot.area}"></span></p>
+                    <p><b>Time Zone:</b> <span th:utext="${pilot.timeZone}"></span></p>
+                </div>
+
             </div>
         </div>
-    <div class="text-wrapper">
-        <div class="regular-text" th:object = "${pilot}">
-            <p><b>Char Id:</b> <span th:utext="${pilot.charId}"></span></p>
-            <p><b>Char Name:</b> <span th:utext="${pilot.charName}"></span></p>
-            <p><b>Corp Id:</b> <span th:utext="${pilot.corpId}"></span></p>
-            <p><b>Corp Access:</b> <span th:utext="${pilot.corpAccess}"></span></p>
-            <p><b>Ally Id:</b> <span th:utext="${pilot.allyId}"></span></p>
-            <p><b>Total Sp:</b> <span th:utext="${pilot.totalSp}"></span></p>
-        </div>
+<div class="text-about">
+    <div><p class="text"><b>BIO:</b></p></div>
+<div class = "backgrount-text-colour">
+    <p class="text"><span th:utext="${pilot.advertText}"></span></p>
+</div>
+</div>
     </div>
+    <div class="front">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
     </div>
-        </div>
-        <div class="front">
-            <div class="stars"></div>
-            <div class="twinkling"></div>
-        </div>
-    </div>
-    </body>
+</div>
+</body>
 </html>
