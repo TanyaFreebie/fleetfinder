@@ -2,8 +2,6 @@ package com.spring.fleetfindertest.controller;
 
 //Вызываем контроллер который обрабатывает конкретный запрос в браузере
 
-import com.spring.fleetfindertest.API.CharData;
-
 import com.spring.fleetfindertest.model.Auth;
 import net.troja.eve.esi.ApiClient;
 import net.troja.eve.esi.ApiClientBuilder;
@@ -78,10 +76,10 @@ public class LoginController {
 ////            AdvertTable.area(charID, "Null");
 ////            AdvertTable.status(charID, true);
 //
-//        }
-//        //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
-//        //return "index";
-//       // return "redirect:/profile/"+charId;
-//        return "pilot-list";
-//    }
-//}
+        }
+        //в ретурне мы должны указать ИМЯ файла шаблона из папки templates который хотим отдать пользователю
+        //return "index";
+       // return "redirect:/profile/"+charId;
+        return "pilot-list";
+    }
+}

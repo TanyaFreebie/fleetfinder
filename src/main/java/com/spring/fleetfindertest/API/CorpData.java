@@ -50,8 +50,8 @@ public class CorpData{
         corp.setCorpId((long)corpID(api));
         corp.setCorpName(corpName(api));
         corp.setCorpTicker(corpTicker(api));
-        corp.setMemberCount(memberCount(api));
-        corp.setAllyId(allyID(api));
+        corp.setMemberCount((long) memberCount(api));
+        corp.setAllyId((long) allyID(api));
 
 
 
