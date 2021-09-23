@@ -1,4 +1,4 @@
-package com.company.TanyasManualTests.dataTypes;
+package com.spring.fleetfindertest.API;
 
 import com.spring.fleetfindertest.model.Corporation;
 import net.troja.eve.esi.ApiException;
@@ -6,7 +6,7 @@ import net.troja.eve.esi.api.CorporationApi;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.model.CorporationResponse;
 
-import static com.company.TanyasManualTests.dataTypes.AllyData.allyID;
+import static com.spring.fleetfindertest.API.AllyData.allyID;
 
 public class CorpData{
     private static String datasource = "";

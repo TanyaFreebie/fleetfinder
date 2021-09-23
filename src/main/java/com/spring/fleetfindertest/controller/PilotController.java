@@ -1,12 +1,8 @@
 package com.spring.fleetfindertest.controller;
 
-import com.company.TanyasManualTests.dataTypes.AllyData;
-import com.company.TanyasManualTests.dataTypes.CharData;
-
-import com.company.TanyasManualTests.dataTypes.CorpData;
-import com.company.TanyasManualTests.requestsFromDb.addToDb.AllianceTable;
-import com.company.TanyasManualTests.requestsFromDb.addToDb.CharTable;
-import com.company.TanyasManualTests.requestsFromDb.addToDb.CorpTable;
+import com.spring.fleetfindertest.API.AllyData;
+import com.spring.fleetfindertest.API.CharData;
+import com.spring.fleetfindertest.API.CorpData;
 import com.spring.fleetfindertest.model.Auth;
 import com.spring.fleetfindertest.model.Pilot;
 import com.spring.fleetfindertest.service.AllianceService;
