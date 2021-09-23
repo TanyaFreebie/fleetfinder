@@ -29,12 +29,12 @@
 
                                     <th> Image </th>
 
-                                    <th>Char name</th>
-                                    <th>Corp Id</th>
-                                    <th>Corp Access</th>
-                                    <th>Ally Id</th>
-                                    <th>Total Sp</th>
-                                    <th></th>
+                                    <th>Character</th>
+                                    <th>Skill Points</th>
+                                    <th>Specialization</th>
+                                    <th>Area of Operations</th>
+                                    <th>Time Zone</th>
+                                    <th>BIO</th>
                                     <!-- <th>Ally name</th>-->
                                 </tr>
                                 </thead>
@@ -43,13 +43,11 @@
                                 <tr th:each="pilot : ${pilots}">
                                     <td> <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=64'}"/></td>
                                     <td th:text="${pilot.charName}"></td>
-                                    <td th:text="${pilot.corpId}"></td>
-                                    <!-- <td th:text="${pilot.corpName}"></td>-->
-                                    <td th:text="${pilot.corpAccess}"></td>
-                                    <td th:text="${pilot.allyId}"></td>
                                     <td th:text="${pilot.totalSp}"></td>
-                                    <!--<td th:text="${pilot.allyName}"></td>-->
-                                    <td><a th:href="@{pilot-advertisement/{id}(id=${pilot.charId})}">Advertisement</a></td>
+                                    <td th:text="${pilot.specialization}"></td>
+                                    <td th:text="${pilot.area}"></td>
+                                    <td th:text="${pilot.timeZone}"></td>
+                                    <td><a th:href="@{pilot-advertisement/{id}(id=${pilot.charId})}">More...</a></td>
                                     <!-- <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td> -->
                                 </tr>
                                 </tbody>
