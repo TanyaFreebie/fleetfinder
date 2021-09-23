@@ -1,9 +1,12 @@
 package com.spring.fleetfindertest.API;
 
+import com.spring.fleetfindertest.model.Corporation;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.CorporationApi;
 import net.troja.eve.esi.api.SsoApi;
 import net.troja.eve.esi.model.CorporationResponse;
+
+import static com.spring.fleetfindertest.API.AllyData.allyID;
 
 public class CorpData{
     private static String datasource = "";
@@ -42,14 +45,16 @@ public class CorpData{
         return "https://evewho.com/corporation/" + corpID(api);
     }
 
-//    public static Corporation updateCorp(SsoApi api) throws ApiException{
-//        Corporation corp = new Corporation();
-//        corp.setCorpId((long)corpID(api));
-//        corp.setCorpName(corpName(api));
-//        corp.setCorpTicker(corpTicker(api));
-//        corp.setMemberCount((long) memberCount(api));
-//        corp.setAllyId((long) allyID(api));
-//
-//        return corp;
-//    }
+    public static Corporation updateCorp(SsoApi api) throws ApiException{
+        Corporation corp = new Corporation();
+        corp.setCorpId((long)corpID(api));
+        corp.setCorpName(corpName(api));
+        corp.setCorpTicker(corpTicker(api));
+        corp.setMemberCount(memberCount(api));
+        corp.setAllyId(allyID(api));
+
+
+
+        return corp;
+    }
 }

@@ -12,39 +12,8 @@
 
 </head>
 <body>
-<header th:insert="./fragments/navbar.html :: nav"> </header>
-<!--  profile/charId 31581355 -> propisat iz logina if id != access id = redirect to mainPage -->
-<br/>
-<br/>
-<br/>
-<div class="container">
+        <header th:insert="./fragments/navbar.html :: nav"> </header>
 
-    <div class="profile_wrapper">
-        <div class="profile-container">
-            <div class="image-wrapper">
-                <div class="regular-text" th:object = "${pilot}">
-                    <img th:src="@{'https://images.evetech.net/characters/' + ${pilot.charId} +'/portrait?size=256'}"/>
-                </div>
-            </div>
-            <div class="text-wrapper">
-                <div class="regular-text" th:object = "${pilot}">
-                    <p><b>Char Id:</b> <span th:utext="${pilot.charId}"></span></p>
-                    <p><b>Char Name:</b> <span th:utext="${pilot.charName}"></span></p>
-                    <p><b>Corp Id:</b> <span th:utext="${pilot.corpId}"></span></p>
-                    <p><b>Corp Access:</b> <span th:utext="${pilot.corpAccess}"></span></p>
-                    <p><b>Ally Id:</b> <span th:utext="${pilot.allyId}"></span></p>
-                    <p><b>Total Sp:</b> <span th:utext="${pilot.totalSp}"></span></p>
-                </div>
-                <form action="create-advertisement">
-                    <input type="submit" value="Create advertisement">
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="front">
-        <div class="stars"></div>
-        <div class="twinkling"></div>
-    </div>
-</div>
+
 </body>
 </html>

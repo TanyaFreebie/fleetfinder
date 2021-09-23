@@ -27,11 +27,17 @@ public class Pilot {
     @Column(name = "ally_id")
     private Integer allyId;
 
-    @Column(name="last_update")
-    private String lastUpdate;
+    @Column (name = "timezone")
+    private String timeZone;
 
-    @Column(name="advert_text")
-    private String advertText;
+    @Column(name = "area")
+    private String area;
+
+    @Column(name = "specialization")
+    private String specialization;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
     //char name
     //skill points
     // title of advert Ищу пвп корпу <Посмотреть адвёрт>

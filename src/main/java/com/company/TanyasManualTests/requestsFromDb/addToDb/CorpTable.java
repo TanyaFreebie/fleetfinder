@@ -2,7 +2,6 @@ package com.company.TanyasManualTests.requestsFromDb.addToDb;
 
 import com.company.dbHelper.dbConnection.DbConnection;
 import com.company.helpers.OutputMessages;
-import com.spring.fleetfindertest.model.Corporation;
 import net.troja.eve.esi.ApiException;
 import net.troja.eve.esi.api.SsoApi;
 
@@ -10,22 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import static com.spring.fleetfindertest.API.AllyData.allyID;
-import static com.spring.fleetfindertest.API.CharData.*;
+import static com.spring.fleetfindertest.API.CharData.charID;
 import static com.spring.fleetfindertest.API.CorpData.*;
+
+import static com.spring.fleetfindertest.API.CorpData.*;
+
 
 public class CorpTable {
     private static PreparedStatement ps;
     private static ResultSet rs;
-    public static Corporation addCorporationDataToDb(SsoApi api, String accessToken) throws ApiException {
-        Corporation corporation = new Corporation();
-        corporation.setCorpId((long) corpID(api));
-        corporation.setCorpName(corpName(api));
-        corporation.setCorpTicker(corpTicker(api));
-        corporation.setMemberCount((long) memberCount(api));
-        corporation.setAllyId((long) allyID(api));
 
-        return corporation;
-    }
     public static void update(SsoApi api) throws ApiException {
         int id = 0;
         try {
@@ -61,6 +54,7 @@ public class CorpTable {
             OutputMessages.error();
         }
     }
+
 
     public static void updateCorp(SsoApi api){
         try {

@@ -9,22 +9,10 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "corporations")
-public class Corporation {
+@Table(name = "advertisement")
+public class Advertisement {
     @Id
-    private Long corpId;
-
-    @Column(name = "corp_name")
-    private String corpName;
-
-    @Column(name = "corp_ticker")
-    private String corpTicker;
-
-    @Column(name = "member_count")
-    private Long memberCount;
-
-    @Column(name = "ally_id")
-    private Long allyId;
+    private Long authorId;
 
     @Column (name = "timezone")
     private String timeZone;
@@ -35,7 +23,9 @@ public class Corporation {
     @Column(name = "specialization")
     private String specialization;
 
+    @Column(name = "advert_text")
+    private String advertText;
+
     @Column(name = "is_active")
     private Boolean isActive;
-
 }

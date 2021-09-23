@@ -26,4 +26,9 @@ public class PilotService {
     public Pilot savePilot(Pilot pilot){
         return pilotRepository.save(pilot);
     }
+
+    //for pilots_list we need more like this, not just all
+   public List<Pilot> findActive(Boolean isActive){ return pilotRepository.findActive(isActive);}
+
+
 }
