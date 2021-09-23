@@ -90,7 +90,7 @@ public class PilotController {
         // return "redirect:/profile/"+charId;
         List<Pilot> pilots = pilotService.findAll();
         model.addAttribute("pilots", pilots);
-        return "pilot-list";
+        return "redirect:/pilot-list";
     }
     //Pilots button in navbar
     @GetMapping("/pilot-list")
