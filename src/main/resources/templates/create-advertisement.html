@@ -24,35 +24,32 @@
             <div class="text-wrapper">
                 <p>CREATE HERE</p>
                 <form action="#" th:action="@{/create-advertisement}" th:object="${pilot}" method="post">
-                <!--<label for="charId">Char Id</label>-->
-                    <label for="advertText">Advert Text</label>
-                    <br/>
-                    <label for="charId">Char id</label>
-                    <input readonly type="number" th:field="*{charId}" id="charId">
-                    <br/>
-                    <label for="charName">Char name</label>
+
+
+                    <label for="charName">Character</label>
                     <input readonly type="text" th:field="*{charName}" id="charName">
                     <br/>
-                    <label for="totalSp">Total sp</label>
+                    <label for="charName">Skill Points</label>
                     <input readonly type="number" th:field="*{totalSp}" id="totalSp">
                     <br/>
-                    <label for="corpId">Corp id</label>
-                    <input readonly type="number" th:field="*{corpId}" id="corpId">
+                    <label for="specialization">Specialization</label>
+                    <input type="text" th:field="*{specialization}" id="specialization" placeholder="specialization">
                     <br/>
-                    <label for="corpAccess">Corp Access</label>
-                    <input readonly type="number" th:field="*{corpAccess}" id="corpAccess">
+                    <label for="area">Area of Operations</label>
+                    <input type="text" th:field="*{specialization}" id="area" placeholder="area">
                     <br/>
-                    <label for="allyId">Ally id</label>
-                    <input readonly type="number" th:field="*{allyId}" id="allyId">
+                    <label for="timeZone">Time Zone</label>
+                    <input type="text" th:field="*{specialization}" id="timeZone" placeholder="timeZone">
                     <br/>
-                <!--    <label for="lastUpdate">Last update</label>-->
-                <!--    <input readonly type="text" th:field="*{lastUpdate}" id="lastUpdate">-->
-                <!--    <br/>-->
-                    <label for="advertText">Advert text</label>
+
+                    <label for="advertText">BIO</label>
                     <input type="text" th:field="*{advertText}" id="advertText" placeholder="Advert Text">
                     <br/>
+                    //кнопки две, но ни одна не работает
+                    //подозреваю, что правильная первая, ибо она врубает редирект
                     <input type="submit" value="Create advertisement">
                 </form>
+                //эта кнопка тут просто для красотыб ибо ничего не происходит
                 <form action="create-advertisement">
                     <input type="submit" value="Create advertisement">
                 </form>
