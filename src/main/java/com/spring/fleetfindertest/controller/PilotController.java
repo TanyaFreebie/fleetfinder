@@ -61,11 +61,7 @@ public class PilotController {
             final ApiClient userClient = new ApiClientBuilder().clientID(ClientId).refreshToken(refreshToken).build();
 
             userApi = new SsoApi(userClient);
-
-
-
             //запрос имени для приветствия
-
 //+++TEST++++
             int charID = CharData.charID(userApi);
             System.out.println(charID);
@@ -76,14 +72,23 @@ public class PilotController {
 //            AdvertTable.timezone(charID, "Asia");
 //            AdvertTable.area(charID, "Null");
 //            AdvertTable.status(charID, true);
-            String specialization = pilotService.findById((long) charID).getSpecialization();
-            String areaOfOperations = pilotService.findById((long) charID).getArea();
-            String timeZone = pilotService.findById((long) charID).getTimeZone();
-            String advertText = pilotService.findById((long) charID).getAdvertText();
-            System.out.println("SOUT CHAR: " + CharData.addCharacterDataToDb(userApi,accessToken,specialization,
-                    areaOfOperations,timeZone,advertText));
-            pilotService.savePilot(CharData.addCharacterDataToDb(userApi,accessToken,specialization,
-                    areaOfOperations,timeZone,advertText));
+            if(pilotService.findById((long) charID) == null) {
+                System.out.println("SOUT CHAR: " + CharData.addCharacterDataToDb(userApi,accessToken));
+                pilotService.savePilot(CharData.addCharacterDataToDb(userApi, accessToken));
+            } else {
+                String specialization = pilotService.findById((long) charID).getSpecialization();
+                String areaOfOperations = pilotService.findById((long) charID).getArea();
+                String timeZone = pilotService.findById((long) charID).getTimeZone();
+                String advertText = pilotService.findById((long) charID).getAdvertText();
+                System.out.println("SOUT CHAR: " + CharData.addCharacterDataToDb(userApi,accessToken,specialization,
+                        areaOfOperations,timeZone,advertText));
+                pilotService.savePilot(CharData.addCharacterDataToDb(userApi,accessToken,specialization,
+                        areaOfOperations,timeZone,advertText));
+            }
+//            System.out.println("SOUT CHAR: " + CharData.addCharacterDataToDb(userApi,accessToken,specialization,
+//                    areaOfOperations,timeZone,advertText));
+//            pilotService.savePilot(CharData.addCharacterDataToDb(userApi,accessToken,specialization,
+//                    areaOfOperations,timeZone,advertText));
 
             System.out.println("SOUT CORP: " + CorpData.addCorporationDataToDb(userApi,accessToken));
             corporationService.saveCorporation(CorpData.addCorporationDataToDb(userApi,accessToken));
