@@ -30,24 +30,37 @@
                     <p><b>Character:</b> <span th:utext="${pilot.charName}"></span></p>
                     <p><b>Skill Points:</b> <span th:utext="${pilot.totalSp}"></span></p>
                     <!-- поля для заполнения-->
-                    <label for="specialization"><b>Specialization : </b></label>
-                    <input type="text" th:field="*{specialization}" id="specialization" placeholder="specialization">
-                    <br/>
+<div class="label-wrapper">
+    <label for="specialization"><b>Specialization : </b></label>
+    <input type="text" th:field="*{specialization}" id="specialization" placeholder="specialization">
+    <br/>
+</div>
+                    <div class="label-wrapper">
+
                     <label for="area"><b>Area of Operations : </b></label>
                     <input type="text" th:field="*{area}" id="area" placeholder="area">
                     <br/>
+                    </div>
+                        <div class="label-wrapper">
+
                     <label for="timeZone"><b>Time Zone : </b></label>
                     <input type="text" th:field="*{timeZone}" id="timeZone" placeholder="timeZone">
                     <br/>
+                        </div>
+                            <div class="label-wrapper">
+
                     <label for="advertText"><b>BIO : </b></label>
                     <input type="text" th:field="*{advertText}" id="advertText" placeholder="Advert Text">
                     <br/>
+                            </div>
 <!--                    data-->
 
 <div class="hidden">
+<div>
     <label for="charId">Char id</label>
     <input readonly type="number" th:field="*{charId}" id="charId">
     <br/>
+</div>
     <label for="charName">Char name</label>
     <input readonly type="text" th:field="*{charName}" id="charName">
     <br/>

@@ -311,3 +311,14 @@ pilot list
       cursor: pointer;
 
   }
+
+.button, input {
+    left: 100%;
+    overflow: visible;
+    position: sticky;
+}
+
+.label-wrapper{
+    background-color: rgb(26, 26, 26);
+    padding-left: 10px;
+}
