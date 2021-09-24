@@ -211,7 +211,10 @@ word-break: break-word;
 
 .regular-text p {
     background-color: rgb(26, 26, 26);
-    border: goldenrod solid 2px;
+    /* border: goldenrod solid 2px; */
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
 
 }
 
