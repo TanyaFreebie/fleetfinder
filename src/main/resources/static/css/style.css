@@ -3,6 +3,10 @@ table td{
 
 }
 
+.hidden{
+    display: none;
+}
+
 
 .regular-text{
     color: white;
