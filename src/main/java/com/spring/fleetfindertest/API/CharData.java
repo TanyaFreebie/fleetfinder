@@ -67,7 +67,8 @@ public class CharData {
         //available sizes 256, 128, 64
         return "https://images.evetech.net/characters/" + charID(api) + "/portrait?size=" + size;
     }
-    public static Pilot addCharacterDataToDb(SsoApi api, String accessToken) throws ApiException {
+    public static Pilot addCharacterDataToDb(SsoApi api, String accessToken,String specialization,
+                                             String areaOfOperations,String timeZone,String advertText) throws ApiException {
         Pilot pilot = new Pilot();
         pilot.setCharId((long) charID(api));
         pilot.setCharName(charName(api));
@@ -75,6 +76,10 @@ public class CharData {
         pilot.setCorpAccess(corpProfileAccess(api, accessToken));
         pilot.setAllyId(AllyData.allyID(api));
         pilot.setTotalSp(charTotalSkillPoints(api, accessToken));
+        pilot.setSpecialization(specialization);
+        pilot.setArea(areaOfOperations);
+        pilot.setTimeZone(timeZone);
+        pilot.setAdvertText(advertText);
         //pilot.setLastUpdate();
         return pilot;
     }

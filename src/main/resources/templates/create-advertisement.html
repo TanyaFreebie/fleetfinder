@@ -34,22 +34,37 @@
                     <input type="text" th:field="*{specialization}" id="specialization" placeholder="specialization">
                     <br/>
                     <label for="area"><b>Area of Operations : </b></label>
-                    <input type="text" th:field="*{specialization}" id="area" placeholder="area">
+                    <input type="text" th:field="*{area}" id="area" placeholder="area">
                     <br/>
                     <label for="timeZone"><b>Time Zone : </b></label>
-                    <input type="text" th:field="*{specialization}" id="timeZone" placeholder="timeZone">
+                    <input type="text" th:field="*{timeZone}" id="timeZone" placeholder="timeZone">
                     <br/>
-
                     <label for="advertText"><b>BIO : </b></label>
                     <input type="text" th:field="*{advertText}" id="advertText" placeholder="Advert Text">
+                    <br/>
+<!--                    data-->
+
+                    <label for="charId">Char id</label>
+                    <input readonly type="number" th:field="*{charId}" id="charId">
+                    <br/>
+                    <label for="charName">Char name</label>
+                    <input readonly type="text" th:field="*{charName}" id="charName">
+                    <br/>
+                    <label for="totalSp">Total sp</label>
+                    <input readonly type="number" th:field="*{totalSp}" id="totalSp">
+                    <br/>
+                    <label for="corpId">Corp id</label>
+                    <input readonly type="number" th:field="*{corpId}" id="corpId">
+                    <br/>
+                    <label for="corpAccess">Corp Access</label>
+                    <input readonly type="number" th:field="*{corpAccess}" id="corpAccess">
+                    <br/>
+                    <label for="allyId">Ally id</label>
+                    <input readonly type="number" th:field="*{allyId}" id="allyId">
                     <br/>
 <!--                    кнопки две, но ни одна не работает-->
 <!--                    подозреваю, что правильная первая, ибо она-->
 <!--                    врубает редирект на эрор-->
-                    <input type="submit" value="Create advertisement">
-                </form>
-<!--                эта кнопка тут просто для красотыб ибо ничего не происходит-->
-                <form action="create-advertisement">
                     <input type="submit" value="Create advertisement">
                 </form>
             </div>

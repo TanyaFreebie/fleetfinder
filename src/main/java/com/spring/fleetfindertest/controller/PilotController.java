@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -75,8 +76,14 @@ public class PilotController {
 //            AdvertTable.timezone(charID, "Asia");
 //            AdvertTable.area(charID, "Null");
 //            AdvertTable.status(charID, true);
-            System.out.println("SOUT CHAR: " + CharData.addCharacterDataToDb(userApi,accessToken));
-            pilotService.savePilot(CharData.addCharacterDataToDb(userApi,accessToken));
+            String specialization = pilotService.findById((long) charID).getSpecialization();
+            String areaOfOperations = pilotService.findById((long) charID).getArea();
+            String timeZone = pilotService.findById((long) charID).getTimeZone();
+            String advertText = pilotService.findById((long) charID).getAdvertText();
+            System.out.println("SOUT CHAR: " + CharData.addCharacterDataToDb(userApi,accessToken,specialization,
+                    areaOfOperations,timeZone,advertText));
+            pilotService.savePilot(CharData.addCharacterDataToDb(userApi,accessToken,specialization,
+                    areaOfOperations,timeZone,advertText));
 
             System.out.println("SOUT CORP: " + CorpData.addCorporationDataToDb(userApi,accessToken));
             corporationService.saveCorporation(CorpData.addCorporationDataToDb(userApi,accessToken));
@@ -138,14 +145,14 @@ public class PilotController {
         model.addAttribute("pilot", pilot);
         return "create-advertisement";
     }
-//    @PostMapping("/create-advertisement")
-//    public String createPilotAdvertisement(Pilot pilot){
-//        //Pilot pilot = pilotService.findById((long) charId);
-//        //model.addAttribute("pilot",pilot);
-//        System.out.println("PILOT: " + pilot.toString());
-//        pilotService.savePilot(pilot);
-//        return "redirect:/pilot-list";
-//    }
+    @PostMapping("/create-advertisement")
+    public String createPilotAdvertisement(Pilot pilot){
+        //Pilot pilot = pilotService.findById((long) charId);
+        //model.addAttribute("pilot",pilot);
+        System.out.println("PILOT: " + pilot.toString());
+        pilotService.savePilot(pilot);
+        return "redirect:/pilot-list";
+    }
     ////PROFILE (navbar) -> Create advertisement IN PROFILE -> Create advertisement IN CREATE ADVERTISEMENT
 //    @PostMapping("/create-advertisement")
 //    public String savePilotAdvertisement(Model model){
