@@ -276,6 +276,7 @@ pilot list
     padding: 20px;
     padding-left: 40px;
     padding-right: 40px;
+      color: white;
 
   }
 
@@ -311,3 +312,14 @@ pilot list
       cursor: pointer;
 
   }
+
+.button, input {
+    left: 100%;
+    overflow: visible;
+    position: sticky;
+}
+
+.label-wrapper{
+    background-color: rgb(26, 26, 26);
+    padding-left: 10px;
+}
