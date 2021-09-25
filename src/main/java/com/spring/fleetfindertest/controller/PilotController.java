@@ -105,7 +105,7 @@ public class PilotController {
         // return "redirect:/profile/"+charId;
         List<Pilot> pilots = pilotService.findAll();
         model.addAttribute("pilots", pilots);
-        return "redirect:/pilot-list";
+        return "redirect:/create-advertisement";
     }
     //Pilots button in navbar
     @GetMapping("/pilot-list")
@@ -125,7 +125,7 @@ public class PilotController {
         System.out.println("!!!!!!!!!!!!!!!!!!!PILOT!!!!!!!!!!!!!!!!!");
         pilot.toString();
         model.addAttribute("pilot", pilot);
-        return "/profile";
+        return "create-advertisement";
     }
     //Profile button in navbar
     @GetMapping("profile")
@@ -133,7 +133,7 @@ public class PilotController {
         Pilot pilot = pilotService.findById((long) charId);
         model.addAttribute("pilot", pilot);
         //System.out.println("CHAR ID: " + charId);
-        return "/profile";
+        return "create-advertisement";
     }
     //PILOT-LIST -> (Blue button) Advertisement
     @GetMapping("/pilot/{id}")
